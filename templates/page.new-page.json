@@ -15,9 +15,22 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "custom_banner_Akzm4P": {
+      "type": "custom-banner",
+      "settings": {
+        "heading_text": "Logo Text",
+        "paragraph_text": "Lorem ipsum dolor sit amet.",
+        "button_text": "Button Text",
+        "heading_text_two": "Heading Text",
+        "main_description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, a minima. Iure cum, rerum suscipit labore natus illum. Doloremque, assumenda?",
+        "main_button_text": "Button Text",
+        "bottom_bar_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "custom_banner_Akzm4P"
   ]
 }
