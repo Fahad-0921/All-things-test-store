@@ -32,12 +32,12 @@
     "product_grid_QBmXAk": {
       "type": "product-grid",
       "settings": {
-        "product_1": "",
-        "product_2": "",
-        "product_3": "",
-        "product_4": "",
-        "product_5": "",
-        "product_6": ""
+        "product_1": "the-3p-fulfilled-snowboard",
+        "product_2": "the-archived-snowboard",
+        "product_3": "the-collection-snowboard-liquid",
+        "product_4": "the-compare-at-price-snowboard",
+        "product_5": "the-multi-location-snowboard",
+        "product_6": "the-hidden-snowboard"
       }
     }
   },
