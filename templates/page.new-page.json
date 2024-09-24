@@ -28,10 +28,22 @@
         "main_button_text": "Button Text",
         "bottom_bar_text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
       }
+    },
+    "product_grid_QBmXAk": {
+      "type": "product-grid",
+      "settings": {
+        "product_1": "",
+        "product_2": "",
+        "product_3": "",
+        "product_4": "",
+        "product_5": "",
+        "product_6": ""
+      }
     }
   },
   "order": [
     "main",
-    "custom_banner_Akzm4P"
+    "custom_banner_Akzm4P",
+    "product_grid_QBmXAk"
   ]
 }
