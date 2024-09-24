@@ -1,116 +1,131 @@
-<div class="pack-box active-pack" id="pack-1" data-pack-name="1 Pack">
-  <h2>1 Pack</h2>
+<div class="pack-box active-pack pack-1" data-pack-name="1 Pack">
+  <div class="pack-inner-content">
+    <!-- Checkbox -->
+    <input type="radio" checked="checked" class="pack-checkbox" />
 
-  {% assign first_variant = product.variants.first %}
-  {% if first_variant %}
-    <!-- First Variant Image -->
-    <img src="{{ first_variant.image | img_url: 'medium' }}" alt="{{ first_variant.title }}">
-  
-    <!-- First Variant Price & Compare Price -->
-    <div class="variant-options">
-      <p>
-        <span>{{ first_variant.title }}</span>
-        <span>Now only: {{ first_variant.price | money }}</span>
+    <!-- Product Image -->
+    {% assign first_variant = product.variants.first %}
+    {% if first_variant %}
+      <img src="{{ first_variant.image | img_url: 'medium' }}" alt="{{ first_variant.title }}" class="product-image">
+    
+      <!-- Pack Title and Save Text -->
+      <div class="pack-details">
+        <h2>{{ first_variant.title }}</h2>
+      </div>
+        <p class="savings-text">{{ settings.save_text }}</p>
+
+      <!-- Price Section -->
+      <div class="price-section">
+        <span class="real-price">{{ first_variant.price | money }}</span>
         {% if first_variant.compare_at_price > first_variant.price %}
           <span class="compare-price">{{ first_variant.compare_at_price | money }}</span>
         {% endif %}
-      </p>
-    </div>
-  {% endif %}
-
-  <p class="savings-text">Save $90!</p>
+      </div>
+    {% endif %}
+  </div>
 </div>
 
-<div class="pack-box" id="pack-2" data-pack-name="2 Pack">
-  <h2>2 Pack</h2>
+<div class="pack-box pack-2" data-pack-name="2 Pack">
+  <div class="pack-inner-content">
+    <!-- Checkbox -->
+    <input type="radio" class="pack-checkbox" />
 
-  {% assign second_variant = product.variants[1] %}
-  {% if second_variant %}
-    <!-- Second Variant Image -->
-    <img src="{{ second_variant.image | img_url: 'medium' }}" alt="{{ second_variant.title }}">
-  
-    <!-- Second Variant Price & Compare Price -->
-    <div class="variant-options">
-      <p>
-        <span>{{ second_variant.title }}</span>
-        <span>Now only: {{ second_variant.price | money }}</span>
+    <!-- Product Image -->
+    {% assign second_variant = product.variants[1] %}
+    {% if second_variant %}
+      <img src="{{ second_variant.image | img_url: 'medium' }}" alt="{{ second_variant.title }}" class="product-image">
+    
+      <!-- Pack Title and Save Text -->
+     <div class="pack-details">
+  <div class="pack-row">
+    <h2>{{ second_variant.title }}</h2>
+    <p class="savings-text">{{ settings.my_save_text }}</p>
+  </div>
+  <span class="free-ship-text">Includes <span class="color-purple-bold">FREE</span> shipping</span>
+</div>
+
+
+      <!-- Price Section -->
+      <div class="price-section">
+        <span class="real-price">{{ second_variant.price | money }}</span>
         {% if second_variant.compare_at_price > second_variant.price %}
           <span class="compare-price">{{ second_variant.compare_at_price | money }}</span>
         {% endif %}
-      </p>
-    </div>
-  {% endif %}
-  
-  <p class="extra-text">Includes free shipping</p>
+      </div>
+    {% endif %}
+  </div>
 
-  <!-- Dynamic Free Product for Pack 2 -->
-  {% assign free_product = all_products[settings.pack_2_free_product] %}
+  
+  <!-- Free Product (Bottom of Pack 2) -->
   <div class="free-product">
+    {% assign free_product = all_products[settings.pack_2_free_product] %}
     {% if free_product %}
       <img src="{{ free_product.featured_image | img_url: 'medium' }}" alt="{{ free_product.title }}">
-      <p>+ FREE {{ settings.pack_2_free_product_text }}</p>
+      <p>{{ settings.pack_2_free_product_text }}</p>
     {% else %}
       <p>No free product selected</p>
     {% endif %}
   </div>
 </div>
 
-<!-- Existing ATC Button in Shopify -->
-<button id="product-add-to-cart" class="add-to-cart">Add to Cart</button>
+<div class="random-wrapper"> 
+<p class="random-text" id="random-orders-text">
+    <span class="blinking-dot"></span>
+  {{ settings.my_blink_text }}
+
+</p>
+  <span class="count-contianer">
+  <span id="order-count"></span> 
+  <span>orders!</span>
+  </span>
+</div>
+
+<button style="min-width: 320px; cursor: pointer; background-color:#959cba; color: white;  height: 60px; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; width: 100%;" id="product-add-to-cart" class="add-to-cart">CLAIM OFFER</button>
 
 
+  <!-- ========== FOR RANDOM ORDER COUNTING ======= -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function updateOrderCount() {
+      // Generate a random number between 50 and 100 (adjust range as needed)
+      var randomOrderCount = Math.floor(Math.random() * (150 - 5 + 1)) + 50;
+      
+      // Insert the random number into the text
+      document.getElementById('order-count').textContent = randomOrderCount;
+    }
 
-<style>
+    // Call the function initially to set the first random number
+    updateOrderCount();
 
-.pack-box {
-  border: 2px solid transparent;
-  padding: 20px;
-  width: 250px;
-  cursor: pointer;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.pack-box.active-pack {
-  border-color: #008000;
-  background-color: #f0f9f0;
-}
-
-.savings-text {
-  color: red;
-}
-
-.free-product {
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-.add-to-cart {
-  background-color: #008000;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-}
-
-</style>
+    // Set an interval to update the number every 30 seconds (30000 milliseconds)
+    setInterval(updateOrderCount, 5000); // 30 seconds
+  });
+</script>
 
 
 
 <script>
+  
 let selectedPack = '1 Pack'; // Default to 1 Pack (Pack 1 is active by default)
 
 // Handle pack selection
 document.querySelectorAll('.pack-box').forEach(box => {
   box.addEventListener('click', function() {
     // Remove active class from all packs
-    document.querySelectorAll('.pack-box').forEach(box => box.classList.remove('active-pack'));
+    document.querySelectorAll('.pack-box').forEach(box => {
+      box.classList.remove('active-pack');
+      box.querySelector('.pack-checkbox').checked = false; // Uncheck all checkboxes
+    });
 
     // Set clicked pack as active
     this.classList.add('active-pack');
+    this.querySelector('.pack-checkbox').checked = true; // Check the clicked checkbox
 
     // Set the selected pack
     selectedPack = this.dataset.packName;
   });
 });
+
 
 // Listen for the existing ATC button click event
 document.getElementById('product-add-to-cart').addEventListener('click', function(event) {
@@ -190,18 +205,33 @@ function addItemsToCart(items) {
     });
 }
 
-// Function to update the cart drawer after items are added
+  // Function to update the cart drawer after items are added or removed
 function updateCartDrawer() {
     $.ajax({
         url: '/cart.js',
         method: 'GET',
         dataType: 'json',
         success: function(data) {
-            // Find the cart drawer and update its content
             const cartDrawer = document.querySelector('cart-drawer');
+
             if (cartDrawer) {
-                // Assuming you have a method to update the drawer's content
-                cartDrawer.updateContent();
+                cartDrawer.updateContent(); // Update cart drawer content
+
+                // Check if Pack 2 is still in the cart
+                let isPack2InCart = false;
+                let freeProductVariantId = '{{ all_products[settings.pack_2_free_product].variants.first.id }}';
+
+                data.items.forEach(function(item) {
+                    if (item.properties && item.properties['Pack'] === '2 Pack') {
+                        isPack2InCart = true;
+                    }
+                });
+
+                // If Pack 2 is not found in the cart, remove the free product
+                if (!isPack2InCart) {
+                    removeItemFromCart(freeProductVariantId); // Function to remove the free product
+                }
+
                 console.log('Cart drawer content updated');
             } else {
                 console.error('Cart drawer element not found');
@@ -213,6 +243,30 @@ function updateCartDrawer() {
     });
 }
 
+// Function to remove an item from the cart
+function removeItemFromCart(variantId) {
+    $.ajax({
+        url: '/cart/change.js',
+        method: 'POST',
+        data: JSON.stringify({
+            id: variantId,
+            quantity: 0
+        }),
+        dataType: 'json',
+        success: function(data) {
+            console.log('Free product removed from cart:', data);
+            // Optionally, update the cart drawer and cart icon
+            updateCartDrawer();
+            updateCartIcon();
+        },
+        error: function(error) {
+            console.error('Error removing item from cart:', error);
+        }
+    });
+}
+
+
+  
 // Function to update the cart icon bubble
 function updateCartIcon() {
     $.ajax({
@@ -233,5 +287,4 @@ function showNotification(message) {
     alert(message); // Replace with your custom notification UI
 }
 </script>
-
 
