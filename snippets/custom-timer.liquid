@@ -1,0 +1,83 @@
+<div class="my-custom-timer">
+<span class="subtitle-text">Want it by Friday, 13 Sep ?</span>
+
+<div id="countdown-timer">
+  <div class="default-text">ORDER WITHIN </div>
+ <span id="hours">02</span>  <span>HOURS</span>
+  <span id="minutes">30</span> <span>MINUTES</span>
+</div>
+  
+</div>
+
+
+
+<style>
+.my-custom-timer .subtitle-text{
+  font-family: 'Montserrat';
+    font-size:  18px;
+  font-weight: 400;
+  color: #000000;
+}
+  
+  
+#countdown-timer {
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  margin: 10px 0;
+  font-family: 'Montserrat';
+}
+
+#countdown-timer .default-text{
+  margin-right: 5px;
+
+}
+
+#countdown-timer span {
+  margin-right: 5px; 
+} 
+  
+</style>
+
+
+<script>
+  
+// Set the initial countdown time (in seconds)
+let initialCountdownTime = 2 * 60 * 60 + 30 * 60; // 2 hours and 30 minutes
+
+function startCountdown() {
+  // Get the last saved time from localStorage or set to the initial value
+  let countdownTime = localStorage.getItem('countdownTime') ? parseInt(localStorage.getItem('countdownTime')) : initialCountdownTime;
+
+  let countdownInterval = setInterval(function () {
+    // Calculate hours, minutes, and seconds
+    let hours = Math.floor(countdownTime / 3600);
+    let minutes = Math.floor((countdownTime % 3600) / 60);
+
+    // Format the values to always display two digits
+    document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+    document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+
+    // Save the current countdown time to localStorage
+    localStorage.setItem('countdownTime', countdownTime);
+
+    // Decrease the time by one second
+    countdownTime--;
+
+    // If the countdown reaches zero, reset to the initial value
+    if (countdownTime < 0) {
+      clearInterval(countdownInterval);
+      localStorage.removeItem('countdownTime'); // Reset saved time
+      countdownTime = initialCountdownTime; // Reset to initial time
+      startCountdown(); // Restart the countdown
+    }
+  }, 1000); // Run every second (1000 ms)
+}
+
+// Start the countdown when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  startCountdown();
+});
+ 
+</script>

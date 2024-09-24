@@ -1,0 +1,237 @@
+<div class="pack-box active-pack" id="pack-1" data-pack-name="1 Pack">
+  <h2>1 Pack</h2>
+
+  {% assign first_variant = product.variants.first %}
+  {% if first_variant %}
+    <!-- First Variant Image -->
+    <img src="{{ first_variant.image | img_url: 'medium' }}" alt="{{ first_variant.title }}">
+  
+    <!-- First Variant Price & Compare Price -->
+    <div class="variant-options">
+      <p>
+        <span>{{ first_variant.title }}</span>
+        <span>Now only: {{ first_variant.price | money }}</span>
+        {% if first_variant.compare_at_price > first_variant.price %}
+          <span class="compare-price">{{ first_variant.compare_at_price | money }}</span>
+        {% endif %}
+      </p>
+    </div>
+  {% endif %}
+
+  <p class="savings-text">Save $90!</p>
+</div>
+
+<div class="pack-box" id="pack-2" data-pack-name="2 Pack">
+  <h2>2 Pack</h2>
+
+  {% assign second_variant = product.variants[1] %}
+  {% if second_variant %}
+    <!-- Second Variant Image -->
+    <img src="{{ second_variant.image | img_url: 'medium' }}" alt="{{ second_variant.title }}">
+  
+    <!-- Second Variant Price & Compare Price -->
+    <div class="variant-options">
+      <p>
+        <span>{{ second_variant.title }}</span>
+        <span>Now only: {{ second_variant.price | money }}</span>
+        {% if second_variant.compare_at_price > second_variant.price %}
+          <span class="compare-price">{{ second_variant.compare_at_price | money }}</span>
+        {% endif %}
+      </p>
+    </div>
+  {% endif %}
+  
+  <p class="extra-text">Includes free shipping</p>
+
+  <!-- Dynamic Free Product for Pack 2 -->
+  {% assign free_product = all_products[settings.pack_2_free_product] %}
+  <div class="free-product">
+    {% if free_product %}
+      <img src="{{ free_product.featured_image | img_url: 'medium' }}" alt="{{ free_product.title }}">
+      <p>+ FREE {{ settings.pack_2_free_product_text }}</p>
+    {% else %}
+      <p>No free product selected</p>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Existing ATC Button in Shopify -->
+<button id="product-add-to-cart" class="add-to-cart">Add to Cart</button>
+
+
+
+<style>
+
+.pack-box {
+  border: 2px solid transparent;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.pack-box.active-pack {
+  border-color: #008000;
+  background-color: #f0f9f0;
+}
+
+.savings-text {
+  color: red;
+}
+
+.free-product {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.add-to-cart {
+  background-color: #008000;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+</style>
+
+
+
+<script>
+let selectedPack = '1 Pack'; // Default to 1 Pack (Pack 1 is active by default)
+
+// Handle pack selection
+document.querySelectorAll('.pack-box').forEach(box => {
+  box.addEventListener('click', function() {
+    // Remove active class from all packs
+    document.querySelectorAll('.pack-box').forEach(box => box.classList.remove('active-pack'));
+
+    // Set clicked pack as active
+    this.classList.add('active-pack');
+
+    // Set the selected pack
+    selectedPack = this.dataset.packName;
+  });
+});
+
+// Listen for the existing ATC button click event
+document.getElementById('product-add-to-cart').addEventListener('click', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const itemsToAdd = [];
+
+  // Determine the selected variant based on the active pack
+  let variantId;
+  if (selectedPack === '1 Pack') {
+    variantId = "{{ product.variants.first.id }}"; // First variant ID for Pack 1
+  } else if (selectedPack === '2 Pack') {
+    variantId = "{{ product.variants[1].id }}"; // Second variant ID for Pack 2
+  }
+
+  // Add the selected pack variant to the cart
+  if (variantId) {
+    itemsToAdd.push({
+      id: variantId,
+      quantity: 1,
+      properties: { 'Pack': selectedPack }
+    });
+  }
+
+  // If Pack 2 is selected, add the free product as well
+  if (selectedPack === '2 Pack') {
+    const freeProductVariantId = '{{ all_products[settings.pack_2_free_product].variants.first.id }}'; // Dynamically get free product variant ID
+    if (freeProductVariantId) {
+      itemsToAdd.push({
+        id: freeProductVariantId,
+        quantity: 1
+      });
+    }
+  }
+
+  // Add items to cart via AJAX
+  addItemsToCart(itemsToAdd);
+});
+
+// Function to add items to the cart via AJAX
+function addItemsToCart(items) {
+    $.ajax({
+        url: '/cart/add.js',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ items: items }),
+        dataType: 'json',
+        success: function(data) {
+            console.log('Items added to cart:', data);
+
+            // Update the cart drawer content
+            updateCartDrawer();
+
+            // Update the cart icon
+            updateCartIcon();
+
+            // Ensure cart drawer is not empty and open it
+            $('cart-drawer').removeClass('is-empty');
+            $('.drawer__inner-empty').hide();
+            $('cart-drawer').load(location.href + " #CartDrawer");
+            $('#cart-icon-bubble').load(location.href + " #cart-icon-bubble");
+
+            // Open the cart drawer using vanilla JavaScript
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer) {
+                cartDrawer.open();
+                console.log('Cart drawer opened');
+            } else {
+                console.error('Cart drawer element not found');
+            }
+
+        },
+        error: function(error) {
+            console.error('Error adding items to cart:', error);
+            showNotification('There was an error adding items to the cart.');
+        }
+    });
+}
+
+// Function to update the cart drawer after items are added
+function updateCartDrawer() {
+    $.ajax({
+        url: '/cart.js',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            // Find the cart drawer and update its content
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (cartDrawer) {
+                // Assuming you have a method to update the drawer's content
+                cartDrawer.updateContent();
+                console.log('Cart drawer content updated');
+            } else {
+                console.error('Cart drawer element not found');
+            }
+        },
+        error: function(error) {
+            console.error('Error updating cart drawer:', error);
+        }
+    });
+}
+
+// Function to update the cart icon bubble
+function updateCartIcon() {
+    $.ajax({
+        url: '/cart.js',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            $('#cart-icon-bubble').text(data.item_count);
+        },
+        error: function(error) {
+            console.error('Error updating cart icon:', error);
+        }
+    });
+}
+
+// Optional: Show a notification message
+function showNotification(message) {
+    alert(message); // Replace with your custom notification UI
+}
+</script>
+
+

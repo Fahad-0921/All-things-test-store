@@ -1,0 +1,215 @@
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse our latest products",
+            "heading_size": "h0"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop all",
+            "button_link_1": "shopify:\/\/collections\/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "button"
+      ],
+      "settings": {
+        "image_overlay_opacity": 40,
+        "image_height": "large",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": false,
+        "show_text_below": false
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured products",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "featured_product_GHAgFp": {
+      "type": "featured-product",
+      "blocks": {
+        "text_tDWrhF": {
+          "type": "text",
+          "settings": {
+            "text": "{{ section.settings.product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title_Q63RbG": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price_trLKQf": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "variant_picker_kU8QAL": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector_7FMJcc": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons_r8ir3R": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "share_nhCEBa": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "text_tDWrhF",
+        "title_Q63RbG",
+        "price_trLKQf",
+        "variant_picker_kU8QAL",
+        "quantity_selector_7FMJcc",
+        "buy_buttons_r8ir3R",
+        "share_nhCEBa"
+      ],
+      "settings": {
+        "product": "",
+        "color_scheme": "",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collapsible_content_nDWVkH": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_FQFL6Q": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where can I use the Crystal Hair Eraser?",
+            "icon": "check_mark",
+            "row_content": "<p>Bleame™ Crystal Hair Eraser is safe to use on knuckles, arms, legs, chest, back and bikini area. However, we suggest not to overuse or rub too hard. <\/p><p>NOTE: If you have sensitive skin, try it on your arms\/legs first before you use it on other delicate parts. <\/p><p>*We don’t recommend using the Crystal Hair Remover on your underarms and due to the skin being uneven and wrinkly. These areas are very prone to product overuse and overpressure. <\/p><p>*We don’t recommend using the Crystal Hair Remover on your underarms or face as your skin on those areas are thin and delicate.<\/p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_YmrRF3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_ycdz7w": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "collapsible_row_a8TDky": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_FQFL6Q",
+        "collapsible_row_YmrRF3",
+        "collapsible_row_ycdz7w",
+        "collapsible_row_a8TDky"
+      ],
+      "settings": {
+        "caption": "hey",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-5",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product_bundle_CjjT6E": {
+      "type": "product-bundle",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection",
+    "featured_product_GHAgFp",
+    "collapsible_content_nDWVkH",
+    "product_bundle_CjjT6E"
+  ]
+}
