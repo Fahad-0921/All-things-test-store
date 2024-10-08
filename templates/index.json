@@ -37,7 +37,7 @@
         "divider_eNpBn8": {
           "type": "divider",
           "settings": {
-            "base_width": 70,
+            "base_width": 85,
             "thickness": 1,
             "style": "solid",
             "divider_color": "#ff0000",
