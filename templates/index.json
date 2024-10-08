@@ -28,11 +28,64 @@
           "settings": {
             "text": "<p>Drag and drop block options like heading, text, buttons, dividers, and more.</p>"
           }
+        },
+        "fancy_heading_WFQVta": {
+          "type": "fancy_heading",
+          "settings": {
+            "title": "[Attention-grabbing headline]",
+            "highlight_text_color": "#FFFFFF",
+            "highlight_background_color": "#000000",
+            "padding-left-fancy": 25,
+            "padding-fancy": 10,
+            "border-fancy": 0,
+            "highlight_heading_size": "",
+            "highlight_enable_custom_font": true,
+            "highlight_custom_font": "antique_olive_n4",
+            "heading_level": "h2",
+            "custom_css": ""
+          }
+        },
+        "spacer_ymfec9": {
+          "type": "spacer",
+          "settings": {
+            "size": 32
+          }
+        },
+        "divider_rcKa4f": {
+          "type": "divider",
+          "settings": {
+            "base_width": 100,
+            "thickness": 1,
+            "style": "solid",
+            "divider_color": "#FFFFFF",
+            "padding_top": 40,
+            "padding_bottom": 40
+          }
+        },
+        "text_MXHgkA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Drag and drop block options like heading, text, buttons, dividers, and more.</p>"
+          }
+        },
+        "collapsible_content_VJP6Vj": {
+          "type": "collapsible_content",
+          "settings": {
+            "title": "Shipping information",
+            "text": "<p>Lorem ipsum dolor.Lorem ipsum dolor.Lorem ipsum dolor.Lorem ipsum dolor.</p>",
+            "icon_style": "plus_minus_square",
+            "show_open": false
+          }
         }
       },
       "block_order": [
         "heading_EGtJzM",
-        "text_w8mXy3"
+        "text_w8mXy3",
+        "fancy_heading_WFQVta",
+        "spacer_ymfec9",
+        "divider_rcKa4f",
+        "text_MXHgkA",
+        "collapsible_content_VJP6Vj"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
