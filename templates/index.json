@@ -16,11 +16,11 @@
           "type": "heading",
           "settings": {
             "title": "Attention-grabbing headline",
-            "block_heading_color": "",
-            "block_heading_size": "",
-            "enable_custom_font": false,
-            "custom_font": "abel_n4",
-            "heading_level": "h2"
+            "block_heading_color": "#ffffff",
+            "block_heading_size": "48px",
+            "enable_custom_font": true,
+            "custom_font": "antique_olive_n4",
+            "heading_level": "h1"
           }
         },
         "text_w8mXy3": {
@@ -28,191 +28,11 @@
           "settings": {
             "text": "<p>Drag and drop block options like heading, text, buttons, dividers, and more.</p>"
           }
-        },
-        "fancy_heading_WFQVta": {
-          "type": "fancy_heading",
-          "settings": {
-            "title": "[Attention-grabbing headline]",
-            "highlight_text_color": "#FFFFFF",
-            "highlight_background_color": "#000000",
-            "padding-left-fancy": 25,
-            "padding-fancy": 10,
-            "border-fancy": 0,
-            "highlight_heading_size": "",
-            "highlight_enable_custom_font": true,
-            "highlight_custom_font": "antique_olive_n4",
-            "heading_level": "h2",
-            "custom_css": ""
-          }
-        },
-        "spacer_ymfec9": {
-          "type": "spacer",
-          "settings": {
-            "size": 32
-          }
-        },
-        "divider_rcKa4f": {
-          "type": "divider",
-          "settings": {
-            "base_width": 100,
-            "thickness": 1,
-            "style": "solid",
-            "divider_color": "#FFFFFF",
-            "padding_top": 40,
-            "padding_bottom": 40
-          }
-        },
-        "text_MXHgkA": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Drag and drop block options like heading, text, buttons, dividers, and more.</p>"
-          }
-        },
-        "collapsible_content_VJP6Vj": {
-          "type": "collapsible_content",
-          "settings": {
-            "title": "Shipping information",
-            "text": "<p>Lorem ipsum dolor.Lorem ipsum dolor.Lorem ipsum dolor.Lorem ipsum dolor.</p>",
-            "icon_style": "plus_minus_square",
-            "show_open": false
-          }
-        },
-        "small_text_6HWQiJ": {
-          "type": "small_text",
-          "settings": {
-            "small_text": "<p>New arrivals</p>"
-          }
-        },
-        "list_WVUVfk": {
-          "type": "list",
-          "settings": {
-            "text": "<p>** Important point number one</p><p>** Next point in the list</p>",
-            "list_style": "decimal"
-          }
-        },
-        "buttons_kpeENn": {
-          "type": "buttons",
-          "settings": {
-            "button_radius": 0,
-            "button_label_primary": "Learn more",
-            "link_primary": "",
-            "external_link_primary": false,
-            "button_label_color_primary": "#121212",
-            "button_background_color_primary": "rgba(0,0,0,0)",
-            "button_label_secondary": "Shop now",
-            "link_secondary": "",
-            "external_link_secondary": false,
-            "button_label_color_secondary": "#FFFFFF",
-            "button_background_color_secondary": "#121212"
-          }
-        },
-        "icons_VeBNGw": {
-          "type": "icons",
-          "settings": {
-            "icon_width": 25,
-            "image_size": 100,
-            "gap": 20,
-            "icon_alignment": "default",
-            "mobile_icon_width": 50,
-            "text_1": "",
-            "link_1": "",
-            "text_2": "",
-            "link_2": "",
-            "text_3": "",
-            "link_3": "",
-            "text_4": "",
-            "link_4": ""
-          }
-        },
-        "text_columns_By4wfn": {
-          "type": "text_columns",
-          "settings": {
-            "gap": 10,
-            "text_alignment": "center",
-            "heading_1": "",
-            "column_1": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh enim, ornare at consequat sed, placerat quis libero. Curabitur id nulla ut nunc aliquam sodales.</p>",
-            "heading_2": "",
-            "column_2": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh enim, ornare at consequat sed, placerat quis libero. Curabitur id nulla ut nunc aliquam sodales.</p>"
-          }
-        },
-        "inset_image_KygYab": {
-          "type": "inset_image",
-          "settings": {
-            "inset_image": "shopify://shop_images/confused-handsome-man-shrugging-indecisive-pointing-fingers-sideways-cant-choose-two-variant_1258-155317.jpg",
-            "inset_image_size": 100,
-            "image_alignment": "default"
-          }
-        },
-        "newsletter_XFjWUY": {
-          "type": "newsletter",
-          "settings": {
-            "layout": "compact",
-            "email_label": "Email address",
-            "submit_label": "Submit",
-            "show_first_name": false,
-            "first_name_label": "First name",
-            "show_last_name": false,
-            "last_name_label": "Last name",
-            "button_label_color": "#FFFFFF",
-            "button_background_color": "#283144",
-            "button_radius": 0
-          }
-        },
-        "video_nkUT6c": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/19627-304735769_tiny.mp4",
-            "autoplay": true,
-            "loop": true,
-            "show_controls": true
-          }
-        },
-        "feature_range_W8kB78": {
-          "type": "feature_range",
-          "settings": {
-            "title": "Heading",
-            "low_range_label": "Mild",
-            "high_range_label": "Spicy",
-            "level": 5,
-            "line_color": "#334fb4",
-            "dot_color": "#283144",
-            "line_size": 8,
-            "dot_size": 18
-          }
-        },
-        "countdown_timer_qhBtGP": {
-          "type": "countdown_timer",
-          "settings": {
-            "timezone": "+08:00 ~ (GMT+08:00) Hong Kong",
-            "start_month": "October",
-            "start_day": 1,
-            "start_year": "2024",
-            "start_time": "21:00:00",
-            "end_month": "October",
-            "end_day": 25,
-            "end_year": "2024",
-            "end_time": "23:30:00"
-          }
         }
       },
       "block_order": [
         "heading_EGtJzM",
-        "text_w8mXy3",
-        "fancy_heading_WFQVta",
-        "spacer_ymfec9",
-        "divider_rcKa4f",
-        "text_MXHgkA",
-        "collapsible_content_VJP6Vj",
-        "small_text_6HWQiJ",
-        "list_WVUVfk",
-        "buttons_kpeENn",
-        "icons_VeBNGw",
-        "text_columns_By4wfn",
-        "inset_image_KygYab",
-        "newsletter_XFjWUY",
-        "video_nkUT6c",
-        "feature_range_W8kB78",
-        "countdown_timer_qhBtGP"
+        "text_w8mXy3"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
