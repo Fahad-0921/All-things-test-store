@@ -23,17 +23,6 @@
             "heading_level": "h1"
           }
         },
-        "heading_iPBFqJ": {
-          "type": "heading",
-          "settings": {
-            "title": "20% Discount Limited Time Offer",
-            "block_heading_color": "",
-            "block_heading_size": "30px",
-            "enable_custom_font": true,
-            "custom_font": "arimo_n4",
-            "heading_level": "h6"
-          }
-        },
         "divider_eNpBn8": {
           "type": "divider",
           "settings": {
@@ -43,6 +32,17 @@
             "divider_color": "#181818",
             "padding_top": 0,
             "padding_bottom": 0
+          }
+        },
+        "heading_iPBFqJ": {
+          "type": "heading",
+          "settings": {
+            "title": "20% Discount Limited Time Offer",
+            "block_heading_color": "",
+            "block_heading_size": "30px",
+            "enable_custom_font": true,
+            "custom_font": "arimo_n4",
+            "heading_level": "h6"
           }
         },
         "countdown_timer_xcHFpK": {
@@ -71,15 +71,15 @@
             "button_label_secondary": "Shop now",
             "link_secondary": "",
             "external_link_secondary": false,
-            "button_label_color_secondary": "#FFFFFF",
+            "button_label_color_secondary": "#ffffff",
             "button_background_color_secondary": "#121212"
           }
         }
       },
       "block_order": [
         "heading_EGtJzM",
-        "heading_iPBFqJ",
         "divider_eNpBn8",
+        "heading_iPBFqJ",
         "countdown_timer_xcHFpK",
         "buttons_UXcdD8"
       ],
