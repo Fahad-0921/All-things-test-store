@@ -23,10 +23,15 @@
             "heading_level": "h1"
           }
         },
-        "text_w8mXy3": {
-          "type": "text",
+        "heading_iPBFqJ": {
+          "type": "heading",
           "settings": {
-            "text": "<p>20% Offer Limited Time Offer</p>"
+            "title": "20% Discount Limited Time Offer",
+            "block_heading_color": "",
+            "block_heading_size": "30px",
+            "enable_custom_font": true,
+            "custom_font": "arimo_n4",
+            "heading_level": "h6"
           }
         },
         "countdown_timer_xcHFpK": {
@@ -46,7 +51,7 @@
       },
       "block_order": [
         "heading_EGtJzM",
-        "text_w8mXy3",
+        "heading_iPBFqJ",
         "countdown_timer_xcHFpK"
       ],
       "settings": {
