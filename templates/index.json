@@ -95,7 +95,7 @@
         "text_color": "#121212",
         "text_background_color": "linear-gradient(180deg, rgba(18, 18, 18, 0), rgba(82, 218, 236, 1) 100%)",
         "image_overlay_color": "",
-        "animation": "fade-in-up",
+        "animation": "fade-in-right",
         "max_width": "",
         "outer_margin_top": 0,
         "outer_margin_bottom": 40,
