@@ -44,7 +44,7 @@
         "text_position": "center center",
         "text_width": 600,
         "text_color": "#121212",
-        "text_background_color": "",
+        "text_background_color": "linear-gradient(180deg, rgba(18, 18, 18, 0), rgba(82, 218, 236, 1) 100%)",
         "image_overlay_color": "",
         "animation": "none",
         "max_width": "",
