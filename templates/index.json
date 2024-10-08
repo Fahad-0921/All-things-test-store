@@ -166,6 +166,33 @@
             "loop": true,
             "show_controls": true
           }
+        },
+        "feature_range_W8kB78": {
+          "type": "feature_range",
+          "settings": {
+            "title": "Heading",
+            "low_range_label": "Mild",
+            "high_range_label": "Spicy",
+            "level": 5,
+            "line_color": "#334fb4",
+            "dot_color": "#283144",
+            "line_size": 8,
+            "dot_size": 18
+          }
+        },
+        "countdown_timer_qhBtGP": {
+          "type": "countdown_timer",
+          "settings": {
+            "timezone": "+08:00 ~ (GMT+08:00) Hong Kong",
+            "start_month": "October",
+            "start_day": 1,
+            "start_year": "2024",
+            "start_time": "21:00:00",
+            "end_month": "October",
+            "end_day": 25,
+            "end_year": "2024",
+            "end_time": "23:30:00"
+          }
         }
       },
       "block_order": [
@@ -183,7 +210,9 @@
         "text_columns_By4wfn",
         "inset_image_KygYab",
         "newsletter_XFjWUY",
-        "video_nkUT6c"
+        "video_nkUT6c",
+        "feature_range_W8kB78",
+        "countdown_timer_qhBtGP"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
