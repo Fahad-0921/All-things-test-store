@@ -134,6 +134,38 @@
             "heading_2": "",
             "column_2": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh enim, ornare at consequat sed, placerat quis libero. Curabitur id nulla ut nunc aliquam sodales.</p>"
           }
+        },
+        "inset_image_KygYab": {
+          "type": "inset_image",
+          "settings": {
+            "inset_image": "shopify://shop_images/confused-handsome-man-shrugging-indecisive-pointing-fingers-sideways-cant-choose-two-variant_1258-155317.jpg",
+            "inset_image_size": 100,
+            "image_alignment": "default"
+          }
+        },
+        "newsletter_XFjWUY": {
+          "type": "newsletter",
+          "settings": {
+            "layout": "compact",
+            "email_label": "Email address",
+            "submit_label": "Submit",
+            "show_first_name": false,
+            "first_name_label": "First name",
+            "show_last_name": false,
+            "last_name_label": "Last name",
+            "button_label_color": "#FFFFFF",
+            "button_background_color": "#283144",
+            "button_radius": 0
+          }
+        },
+        "video_nkUT6c": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/19627-304735769_tiny.mp4",
+            "autoplay": true,
+            "loop": true,
+            "show_controls": true
+          }
         }
       },
       "block_order": [
@@ -148,7 +180,10 @@
         "list_WVUVfk",
         "buttons_kpeENn",
         "icons_VeBNGw",
-        "text_columns_By4wfn"
+        "text_columns_By4wfn",
+        "inset_image_KygYab",
+        "newsletter_XFjWUY",
+        "video_nkUT6c"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
