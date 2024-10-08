@@ -47,12 +47,29 @@
             "end_year": "2024",
             "end_time": "00:30:00"
           }
+        },
+        "buttons_UXcdD8": {
+          "type": "buttons",
+          "settings": {
+            "button_radius": 22,
+            "button_label_primary": "Learn more",
+            "link_primary": "",
+            "external_link_primary": false,
+            "button_label_color_primary": "#121212",
+            "button_background_color_primary": "rgba(0,0,0,0)",
+            "button_label_secondary": "Shop now",
+            "link_secondary": "",
+            "external_link_secondary": false,
+            "button_label_color_secondary": "#FFFFFF",
+            "button_background_color_secondary": "#121212"
+          }
         }
       },
       "block_order": [
         "heading_EGtJzM",
         "heading_iPBFqJ",
-        "countdown_timer_xcHFpK"
+        "countdown_timer_xcHFpK",
+        "buttons_UXcdD8"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
