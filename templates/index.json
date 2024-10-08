@@ -76,6 +76,64 @@
             "icon_style": "plus_minus_square",
             "show_open": false
           }
+        },
+        "small_text_6HWQiJ": {
+          "type": "small_text",
+          "settings": {
+            "small_text": "<p>New arrivals</p>"
+          }
+        },
+        "list_WVUVfk": {
+          "type": "list",
+          "settings": {
+            "text": "<p>** Important point number one</p><p>** Next point in the list</p>",
+            "list_style": "decimal"
+          }
+        },
+        "buttons_kpeENn": {
+          "type": "buttons",
+          "settings": {
+            "button_radius": 0,
+            "button_label_primary": "Learn more",
+            "link_primary": "",
+            "external_link_primary": false,
+            "button_label_color_primary": "#121212",
+            "button_background_color_primary": "rgba(0,0,0,0)",
+            "button_label_secondary": "Shop now",
+            "link_secondary": "",
+            "external_link_secondary": false,
+            "button_label_color_secondary": "#FFFFFF",
+            "button_background_color_secondary": "#121212"
+          }
+        },
+        "icons_VeBNGw": {
+          "type": "icons",
+          "settings": {
+            "icon_width": 25,
+            "image_size": 100,
+            "gap": 20,
+            "icon_alignment": "default",
+            "mobile_icon_width": 50,
+            "text_1": "",
+            "link_1": "",
+            "text_2": "",
+            "link_2": "",
+            "text_3": "",
+            "link_3": "",
+            "text_4": "",
+            "link_4": ""
+          }
+        },
+        "text_columns_By4wfn": {
+          "type": "text_columns",
+          "settings": {
+            "gap": 10,
+            "text_alignment": "center",
+            "heading_1": "",
+            "column_1": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh enim, ornare at consequat sed, placerat quis libero. Curabitur id nulla ut nunc aliquam sodales.</p>",
+            "heading_2": "",
+            "column_2": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh enim, ornare at consequat sed, placerat quis libero. Curabitur id nulla ut nunc aliquam sodales.</p>"
+          }
         }
       },
       "block_order": [
@@ -85,7 +143,12 @@
         "spacer_ymfec9",
         "divider_rcKa4f",
         "text_MXHgkA",
-        "collapsible_content_VJP6Vj"
+        "collapsible_content_VJP6Vj",
+        "small_text_6HWQiJ",
+        "list_WVUVfk",
+        "buttons_kpeENn",
+        "icons_VeBNGw",
+        "text_columns_By4wfn"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
