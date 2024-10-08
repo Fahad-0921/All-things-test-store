@@ -23,6 +23,12 @@
             "heading_level": "h1"
           }
         },
+        "text_w8mXy3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>20% Offer Limited Time Offer</p>"
+          }
+        },
         "countdown_timer_xcHFpK": {
           "type": "countdown_timer",
           "settings": {
@@ -36,18 +42,12 @@
             "end_year": "2024",
             "end_time": "00:30:00"
           }
-        },
-        "text_w8mXy3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Drag and drop block options like heading, text, buttons, dividers, and more.</p>"
-          }
         }
       },
       "block_order": [
         "heading_EGtJzM",
-        "countdown_timer_xcHFpK",
-        "text_w8mXy3"
+        "text_w8mXy3",
+        "countdown_timer_xcHFpK"
       ],
       "settings": {
         "video": "shopify://files/videos/184734-873923034_small.mp4",
