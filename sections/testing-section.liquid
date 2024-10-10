@@ -1,4 +1,10 @@
-<h3>{{ product.title }}</h3>
+<ul>
+  {% for product_handle in all_products %}
+    {% assign product = all_products[290887106607] %}
+    <li>{{ product.title }}</li>
+  {% endfor %}
+</ul>
+
 
 
 {% schema %}
