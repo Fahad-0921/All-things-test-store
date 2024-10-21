@@ -245,13 +245,14 @@ table:not([class]) td, table:not([class]) th {
   border-radius: 5px;
   padding: 5px;
   z-index: 10;
-  top: 100%; /* Position it below the info icon */
-  left: 50%;
-  transform: translateX(-50%);
+  top: 80%; /* Position it below the info icon */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   white-space: nowrap; /* Prevent text wrapping */
   opacity: 0; /* Start with full transparency */
   transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
   visibility: hidden; /* Start hidden */
+  font-size: 10px;
 }
 
 .info-icon:hover .popup {
