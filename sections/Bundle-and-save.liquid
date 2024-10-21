@@ -113,7 +113,7 @@
 /* Container and Layout */
 .bundle-save-container {
   border: 2px solid #e7e7e7;
-  padding: 5px 20px;
+  padding: 10px 20px;
   width: 100%;
   max-width: 600px;
   margin: auto;
@@ -260,20 +260,17 @@ table:not([class]) td, table:not([class]) th {
 
 
 <script>
-function updateInputBorder(input) {
-  const controls = input.parentElement.children; 
+
+  function updateInputBorder(input) {
+  const controls = input.parentElement; // Target the parent control container
   
   // Check if input value is greater than 0
   if (parseInt(input.value) > 0) {
-    // Apply active class to all controls
-    Array.from(controls).forEach(control => {
-      control.classList.add('active');
-    });
+    // Apply 'active' class to the parent control container
+    controls.classList.add('active');
   } else {
-    // Remove active class if the value is 0
-    Array.from(controls).forEach(control => {
-      control.classList.remove('active');
-    });
+    // Remove 'active' class if the value is 0
+    controls.classList.remove('active');
   }
 }
 
