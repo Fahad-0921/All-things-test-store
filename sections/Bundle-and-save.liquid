@@ -175,6 +175,12 @@
 }
 
 
+.active {
+  border-color: #000; /* Black border when active */
+}
+  
+
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -203,11 +209,23 @@ table:not([class]) td, table:not([class]) th {
 
 
 <script>
-// Function to apply the active border class to the quantity controls
-function applyActiveBorder(quantityControls) {
-  quantityControls.forEach(control => {
-    control.classList.add('active');
-  });
+
+// Function to apply or remove the active class based on the input value
+function updateInputBorder(input) {
+  const controls = input.parentElement.children; // Get all children in the controls div
+  
+  // Check if input value is greater than 0
+  if (parseInt(input.value) > 0) {
+    // Apply active class to all controls
+    Array.from(controls).forEach(control => {
+      control.classList.add('active');
+    });
+  } else {
+    // Remove active class if the value is 0
+    Array.from(controls).forEach(control => {
+      control.classList.remove('active');
+    });
+  }
 }
   
 // Increment Button Logic
