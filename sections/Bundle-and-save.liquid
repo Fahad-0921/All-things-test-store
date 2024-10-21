@@ -249,13 +249,16 @@ table:not([class]) td, table:not([class]) th {
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap; /* Prevent text wrapping */
+  opacity: 0; /* Start with full transparency */
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+  visibility: hidden; /* Start hidden */
 }
 
 .info-icon:hover .popup {
   display: block; /* Show the pop-up on hover */
+  opacity: 1; /* Make it fully visible */
+  visibility: visible; /* Make it visible */
 }
-
-
 
   
   
