@@ -192,6 +192,40 @@ table:not([class]) td, table:not([class]) th {
 
 
 
+<script>
+// Function to toggle the border based on the input value
+function updateInputBorder(input) {
+  if (parseInt(input.value) === 0) {
+    input.classList.remove('active');
+  } else {
+    input.classList.add('active');
+  }
+}
+
+// Increment Button Logic
+document.querySelectorAll('.increment').forEach(button => {
+  button.addEventListener('click', function() {
+    const input = this.previousElementSibling;
+    input.value = parseInt(input.value) + 1;
+    updateInputBorder(input);  // Update border after increment
+  });
+});
+
+// Decrement Button Logic
+document.querySelectorAll('.decrement').forEach(button => {
+  button.addEventListener('click', function() {
+    const input = this.nextElementSibling;
+    if (parseInt(input.value) > 0) {
+      input.value = parseInt(input.value) - 1;
+    }
+    updateInputBorder(input);  // Update border after decrement
+  });
+});
+
+  
+</script>
+
+
 {% schema %}
 {
   "name": "Bundle and Save",
