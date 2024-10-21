@@ -180,8 +180,6 @@
   font-size: 24px;
   width: 40px;
   height: 40px;
-  border: 1px solid lightgray;
-  transition: border-color 0.3s ease;
   cursor: pointer;
   background: none;
 }
@@ -193,16 +191,18 @@
   text-align: center;
   min-height: 0;
   border-radius: 3px;
-    border: 1px solid lightgray;
+}
+
+.my-quantity-controls button,
+.my-quantity-controls input {
+  border: 1px solid lightgray;  /* Light border for initial state */
   transition: border-color 0.3s ease;
-}
-
-
-.active {
-  border-color: #000;
-}
+}  
   
-
+.my-quantity-controls.active button,
+.my-quantity-controls.active input {
+  border-color: black;  /* Black border when active */
+}
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
