@@ -230,6 +230,34 @@ table:not([class]){
 table:not([class]) td, table:not([class]) th {
   padding: 5px;
 }  
+
+
+
+.info-icon {
+  position: relative; /* To position the pop-up correctly */
+}
+
+.popup {
+  display: none; /* Initially hide the pop-up */
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 5px;
+  z-index: 10;
+  top: 100%; /* Position it below the info icon */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.info-icon:hover .popup {
+  display: block; /* Show the pop-up on hover */
+}
+
+
+
+  
   
  
 </style>
