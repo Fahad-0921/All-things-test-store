@@ -180,22 +180,17 @@
   font-size: 24px;
   width: 40px;
   height: 40px;
-  /* background-color: #f0f0f0; */
   border: 1px solid lightgray;
   transition: border-color 0.3s ease;
   cursor: pointer;
   background: none;
 }
 
-/* .my-quantity-controls button.active  {
-        border-color: #000;
-}  
- */
+
 .my-quantity-controls input {
   width: 60px;
   height: 40px;
   text-align: center;
-  /* border: 1px solid #918585; */
   min-height: 0;
   border-radius: 3px;
     border: 1px solid lightgray;
@@ -204,7 +199,7 @@
 
 
 .active {
-  border-color: #000; /* Black border when active */
+  border-color: #000;
 }
   
 
@@ -234,31 +229,30 @@ table:not([class]) td, table:not([class]) th {
 
 
 .info-icon {
-  position: relative; /* To position the pop-up correctly */
+  position: relative; 
 }
 
 .popup {
   min-width: 200px;
   width: 100%;
-  display: none; /* Initially hide the pop-up */
+  display: none; 
   position: absolute;
   background-color: #f5f1f1;
-  /* border: 1px solid #000; */
   border-radius: 5px;
   padding: 15px 10px;
   z-index: 10;
   top: 80%;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
-  visibility: hidden; /* Start hidden */
+  transition: opacity 0.3s ease, visibility 0.3s ease; 
+  visibility: hidden; 
   font-size: 12px;
   line-height: 1.5;
 }
 
 .info-icon:hover .popup {
-  display: block; /* Show the pop-up on hover */
-  opacity: 1; /* Make it fully visible */
-  visibility: visible; /* Make it visible */
+  display: block;
+  opacity: 1; 
+  visibility: visible; 
 }
 
 </style>
