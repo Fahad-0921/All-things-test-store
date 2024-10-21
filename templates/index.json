@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "auto_play_video_mB6fNe": {
@@ -311,6 +311,11 @@
       "type": "product-bundle",
       "settings": {
       }
+    },
+    "bundle_and_save_yWYpdE": {
+      "type": "Bundle-and-save",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -319,6 +324,7 @@
     "featured_collection",
     "featured_product_GHAgFp",
     "collapsible_content_nDWVkH",
-    "product_bundle_CjjT6E"
+    "product_bundle_CjjT6E",
+    "bundle_and_save_yWYpdE"
   ]
 }
