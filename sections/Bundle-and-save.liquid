@@ -261,18 +261,13 @@ table:not([class]) td, table:not([class]) th {
   visibility: visible; /* Make it visible */
 }
 
-  
-  
- 
 </style>
 
 
 
 <script>
-
-// Function to apply or remove the active class based on the input value
 function updateInputBorder(input) {
-  const controls = input.parentElement.children; // Get all children in the controls div
+  const controls = input.parentElement.children; 
   
   // Check if input value is greater than 0
   if (parseInt(input.value) > 0) {
@@ -287,6 +282,8 @@ function updateInputBorder(input) {
     });
   }
 }
+
+
   
 // Increment Button Logic
 document.querySelectorAll('.increment').forEach(button => {
