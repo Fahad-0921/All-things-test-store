@@ -208,15 +208,16 @@ table:not([class]) td, table:not([class]) th {
 
 
 <script>
-// Function to toggle the border based on the input value
+// Function to toggle the border based on input value
 function updateInputBorder(input) {
-  if (parseInt(input.value) === 0) {
-    input.classList.remove('active');
-  } else {
+  // Default to light border
+  input.classList.remove('active');
+
+  // If the input value is greater than 0, add the black border
+  if (parseInt(input.value) > 0) {
     input.classList.add('active');
   }
 }
-
 // Increment Button Logic
 document.querySelectorAll('.increment').forEach(button => {
   button.addEventListener('click', function() {
