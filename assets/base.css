@@ -3617,6 +3617,7 @@ display:none;
   align-items:center;
   justify-content: end;
 }
+
 .variant-drop-down input[type=number] {
     width: 50px;
     border: black 1px solid;
