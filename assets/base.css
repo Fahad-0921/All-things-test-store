@@ -3626,7 +3626,6 @@ display:none;
 .variant-button {
     background-color: #000;
     color: #fff;
-    /* width: 150px; */
     margin-left: 5px;
     display: flex;
     justify-content: center;
