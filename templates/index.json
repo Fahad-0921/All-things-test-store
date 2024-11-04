@@ -309,6 +309,9 @@
     },
     "product_bundle_CjjT6E": {
       "type": "product-bundle",
+      "custom_css": [
+        ".main-container {border: 2px solid red;}"
+      ],
       "settings": {
       }
     },

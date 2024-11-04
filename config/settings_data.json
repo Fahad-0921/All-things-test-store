@@ -155,6 +155,19 @@
     "content_for_index": [
 
     ],
+    "blocks": {
+      "11989592277864780042": {
+        "type": "shopify://apps/wholesale-pricing-discount/blocks/app-embed/94cbfa01-7191-4bb2-bcd8-b519b9b3bd06",
+        "disabled": true,
+        "settings": {
+          "showCrossOutPrice": false,
+          "showCurrencyCodes": false,
+          "priceColor": "#000000",
+          "crossOutPriceColor": "#E9330C",
+          "appProxy": "/apps/wpdapp"
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
