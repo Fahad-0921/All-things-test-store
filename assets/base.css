@@ -3662,8 +3662,6 @@ details-disclosure > details {
   }
 }
 
-/* CSS for sticky bar websensepro */
-
 #MainContent .sticky-bar {
   display: flex;
   justify-content: space-between;
