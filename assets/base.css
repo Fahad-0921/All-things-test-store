@@ -3632,6 +3632,7 @@ display:none;
     align-items: center;
     padding: 15px 100px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .sticky-bar-thumb-thumb {
