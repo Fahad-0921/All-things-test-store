@@ -3623,10 +3623,15 @@ display:none;
     margin: 5px; }
 
 .variant-button {
-  background-color: black;
-  color: white;
-  width: 150px;
-  margin-left: 5px;
+    background-color: #000;
+    color: #fff;
+    /* width: 150px; */
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 100px;
+    border-radius: 5px;
 }
 
 .sticky-bar-thumb-thumb {
