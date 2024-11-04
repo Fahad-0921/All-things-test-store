@@ -310,7 +310,7 @@
     "product_bundle_CjjT6E": {
       "type": "product-bundle",
       "custom_css": [
-        ".main-container {border: 2px solid orange;}"
+        ".main-container {border: 2px solid #50521;}"
       ],
       "settings": {
       }
