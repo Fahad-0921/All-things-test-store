@@ -126,12 +126,26 @@
           "settings": {
             "collection": "automated-collection"
           }
+        },
+        "featured_collection_ELcREF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_XL9U6c": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
         }
       },
       "block_order": [
         "featured_collection_brm4Wp",
         "featured_collection_gffPDr",
-        "featured_collection_npkTF3"
+        "featured_collection_npkTF3",
+        "featured_collection_ELcREF",
+        "featured_collection_XL9U6c"
       ],
       "settings": {
         "title": "",
