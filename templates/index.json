@@ -285,6 +285,7 @@
         "buy_buttons_r8ir3R",
         "share_nhCEBa"
       ],
+      "disabled": true,
       "settings": {
         "product": "",
         "color_scheme": "",
@@ -346,6 +347,7 @@
         "collapsible_row_ycdz7w",
         "collapsible_row_a8TDky"
       ],
+      "disabled": true,
       "settings": {
         "caption": "hey",
         "heading": "Collapsible content",
