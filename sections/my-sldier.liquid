@@ -1,6 +1,370 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
+<section class="ingredients-section" id="main-wrappper-{{ section.id }}">
+  <h2>Powerful, Clean,<br>and Safe Ingredients</h2>
+
+  <div class="ingredients-container" id="visible-container">
+    
+    <!-- Left Column Ingredients -->
+    <div class="ingredient-column">
+      {% for block in section.blocks %}
+        {% if block.type == "left_ingredient" %}
+          <div class="ingredient">
+            <img src="{{ block.settings.ingredient_image | img_url: 'medium' }}" alt="{{ block.settings.ingredient_title }}">
+            <div class="ingredient-text">
+              <h3>{{ block.settings.ingredient_title }}</h3>
+              <p>{{ block.settings.ingredient_description }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Center Product Image -->
+    <div class="product-image">
+      <img src="{{ section.settings.main_product_imagee | img_url: 'medium' }}" alt="Betterbrand Product">
+    </div>
+
+    <!-- Right Column Ingredients -->
+    <div class="ingredient-column">
+      {% for block in section.blocks %}
+        {% if block.type == "right_ingredient" %}
+          <div class="ingredient">
+            <img src="{{ block.settings.ingredient_image | img_url: 'medium' }}" alt="{{ block.settings.ingredient_title }}">
+            <div class="ingredient-text">
+              <h3>{{ block.settings.ingredient_title }}</h3>
+              <p>{{ block.settings.ingredient_description }}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+
+
+
+  
+  <!-- =================================================== -->
+  
+  <div class="ingredients-container" id="hidden-container">  
+    <!-- Center Product Image -->
+   <div class="product-image">
+      <img src="{{ section.settings.main_product_imagee | img_url: 'medium' }}" alt="Betterbrand Product">
+    </div>
+
+
+    <div class="ingredients-slider">
+      <!-- <button class="slider-prev">←</button> -->
+      <div class="slider-wrapper">
+        
+         <!-- Left Column Ingredients -->
+    <div class="ingredient-column">
+      {% for block in section.blocks %}
+          <div class="ingredient">
+            <img src="{{ block.settings.ingredient_image | img_url: 'medium' }}" alt="{{ block.settings.ingredient_title }}">
+            <div class="ingredient-text">
+              <h3>{{ block.settings.ingredient_title }}</h3>
+              <p>{{ block.settings.ingredient_description }}</p>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+        
+      </div>
+    </div>
+
+    <div  class="slid-btns">
+      <button class="slider-prev">←</button>
+      <button class="slider-next">→</button>
+    </div>
+    
+  </div>
+  
+</section>
+
+<style>
+
+#hidden-container{
+  display: none;
+}
+
+  
+/* Desktop view styles */
+.ingredients-section {
+  background-color: #f0f8e7;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.ingredients-section h2 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 100px;
+  color:{{ section.settings.main_head_text_color }} ;
+}
+
+.ingredients-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ingredient-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.ingredient {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  text-align: left;
+  min-height: 120px;
+}
+
+.ingredient img {
+  width: 100px;
+  height: auto;
+}
+
+.ingredient-text h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+color:{{ section.settings.head_text_color }} ;
+  margin: 0;
+}
+
+.ingredient-text p {
+  font-size: 16px;
+color:{{ section.settings.desc_text_color }} ;
+  margin: 5px 0 0;
+}
+
+.product-image {
+  width: 500px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Slider styles for 1020px and below */
+@media (max-width: 1020px) {
+
+#hidden-container{
+  display: block;
+}
+
+
+#visible-container{
+  display: none;
+}
+  
+  .ingredients-container {
+    flex-direction: column;
+    align-items: center;
   }
+
+  .product-image {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .ingredients-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+  .ingredient-column{
+    flex-direction: row;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    gap: 50px;
+  }
+
+  .ingredient {
+    flex: 1 0 45%;
+    /* justify-content: center; */
+    text-align: center;
+    border: 1px solid #000;
+    padding: 10px 10px 20px;
+    align-items: flex-start;
+  }
+
+  .slider-prev,
+  .slider-next {
+    background: #2f2f2f;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+
+  .slider-prev {
+    left: 10px;
+    top: 40px;
+    position: relative;
+  }
+
+  .slider-next {
+    right: 10px;
+    top: 40px;
+    position: relative;
+  }
+
+  .slid-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  
+  /* ============ */
+.ingredient img {
+  width: 70px;
+}
+
+.ingredient-text h3 {
+    font-size: 15px;
+  text-align: left;
+}  
+
+.ingredient-text p {
+    font-size: 12px;
+  text-align: left;
+}
+  
+}
+ 
+</style>
+
+{% style %}
+  
+  #main-wrappper-{{ section.id }} {
+     background-color: {{ section.settings.background_color }};
+    
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    margin-top:{{ section.settings.desktop_margin_top }}px;
+    margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+    
+  } 
+
+
+@media (max-width: 1020px) {
+
+#main-wrappper-{{ section.id }} {
+
+  padding-top:{{ section.settings.mobile_padding_top }}px;
+    padding-bottom:{{ section.settings.mobile_padding_bottom }}px;
+    margin-top:{{ section.settings.mobile_margin_top }}px;
+    margin-bottom:{{ section.settings.mobile_margin_bottom }}px;
+  
+}
+}
+ 
+{% endstyle %}
+
+
+
+
+
+
+
+
+<script>
+
+
+  
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderWrapper = document.querySelector(".slider-wrapper");
+  const ingredients = document.querySelectorAll(".ingredient");
+  const prevButton = document.querySelector(".slider-prev");
+  const nextButton = document.querySelector(".slider-next");
+  let currentIndex = 1; // Start at the first real slide (skipping the duplicated last slide at index 0)
+
+  // Update the slider based on the current index
+  function updateSlider() {
+    const offset = -currentIndex * 100;
+    sliderWrapper.style.transform = translateX(${offset}%);
+    sliderWrapper.style.transition = "transform 0.3s ease";
+  }
+
+  // Move to the previous slide
+  prevButton.addEventListener("click", function () {
+    if (currentIndex <= 0) {
+      currentIndex = ingredients.length - 2; // Jump to the last real slide
+      sliderWrapper.style.transition = "none"; // Disable animation for instant move
+      updateSlider();
+      requestAnimationFrame(() => {
+        sliderWrapper.style.transition = "transform 0.3s ease"; // Re-enable animation
+        currentIndex--;
+        updateSlider();
+      });
+    } else {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  // Move to the next slide
+  nextButton.addEventListener("click", function () {
+    if (currentIndex >= ingredients.length - 1) {
+      currentIndex = 1; // Jump to the first real slide
+      sliderWrapper.style.transition = "none"; // Disable animation for instant move
+      updateSlider();
+      requestAnimationFrame(() => {
+        sliderWrapper.style.transition = "transform 0.3s ease"; // Re-enable animation
+        currentIndex++;
+        updateSlider();
+      });
+    } else {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  // Initialize the slider to the first real slide
+  updateSlider();
+});
+  
+</script>
+
+{% schema %}
+{
+  "name": "My Slider",
+  "settings": [
+
+  ],
+  "presets": [
+    {
+      "name": "My Slider"
+    }
+  ]
+}
 {% endschema %}
