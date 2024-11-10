@@ -395,8 +395,9 @@
         "left_ingredient_jf9Kcf": {
           "type": "left_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/Main_5127218a-8f6c-498f-b489-09242c0fab0a.jpg",
+            "ingredient_title": "Slider bot 3",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
         "right_ingredient_HPMxTc": {
