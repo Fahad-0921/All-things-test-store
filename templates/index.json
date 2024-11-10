@@ -419,7 +419,8 @@
         "left_ingredient_xPDa7P": {
           "type": "left_ingredient",
           "settings": {
-            "ingredient_title": "",
+            "ingredient_image": "shopify://shop_images/sample-normal-wax.png",
+            "ingredient_title": "Slide bot 6",
             "ingredient_description": ""
           }
         },
