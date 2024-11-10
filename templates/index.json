@@ -387,8 +387,9 @@
         "right_ingredient_6QyaaW": {
           "type": "right_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/Main_52f8e304-92d9-4a36-82af-50df8fe31c69.jpg",
+            "ingredient_title": "Slide bot 2",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
         "left_ingredient_jf9Kcf": {
