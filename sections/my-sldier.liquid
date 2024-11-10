@@ -293,6 +293,7 @@ color:{{ section.settings.desc_text_color }} ;
 
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const hiddenContainer = document.querySelector("#hidden-container");
@@ -301,33 +302,43 @@ document.addEventListener("DOMContentLoaded", function() {
   const nextButton = hiddenContainer.querySelector(".slider-next");
 
   let currentIndex = 0;
-  const slides = hiddenContainer.querySelectorAll(".ingredient");
-  const slideWidth = slides[0].offsetWidth + 500; // Width of each slide + gap
+  let slidesToShow = window.innerWidth <= 760 ? 1 : 2; // Display 2 slides by default, 1 on smaller screens
+  let slides = hiddenContainer.querySelectorAll(".ingredient");
+  
+  // Function to update slide width and transform position
+  function updateSlider() {
+    slidesToShow = window.innerWidth <= 760 ? 1 : 2;
+    const slideWidth = 100 / slidesToShow; // Width of each slide
+    slides.forEach(slide => slide.style.flex = `0 0 ${slideWidth}%`);
+    sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+  }
 
   function updateSliderPosition() {
-    sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+    const slideWidth = 100 / slidesToShow;
+    sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
   }
 
   nextButton.addEventListener("click", () => {
-    if (currentIndex < slides.length - 1) {
-      currentIndex++;
+    if (currentIndex < slides.length - slidesToShow) {
+      currentIndex += slidesToShow;
       updateSliderPosition();
     }
   });
 
   prevButton.addEventListener("click", () => {
     if (currentIndex > 0) {
-      currentIndex--;
+      currentIndex -= slidesToShow;
       updateSliderPosition();
     }
   });
 
-  // Resize observer to update slide width if window is resized
+  // Resize event to update slidesToShow and re-calculate slide width
   window.addEventListener("resize", () => {
-    if (window.innerWidth <= 1020) {
-      sliderWrapper.style.transition = "transform 0.5s ease";
-    }
+    updateSlider();
   });
+
+  // Initial setup
+  updateSlider();
 });
 </script>
 
