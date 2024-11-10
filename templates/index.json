@@ -379,8 +379,9 @@
         "left_ingredient_wk4JKG": {
           "type": "left_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/Main_f44a9605-cd62-464d-b095-d45cdaa0d0d7.jpg",
+            "ingredient_title": "Slide bot 1",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
         "right_ingredient_6QyaaW": {
@@ -412,6 +413,7 @@
         "right_ingredient_HPMxTc"
       ],
       "settings": {
+        "main_product_imagee": "shopify://shop_images/WhatsApp_Image_2024-07-20_at_01.42.59-removebg35.webp",
         "main_head_text_color": "#000000",
         "head_text_color": "#000000",
         "desc_text_color": "#333333",
