@@ -375,7 +375,56 @@
     },
     "my_sldier_mxzP77": {
       "type": "my-sldier",
-      "settings": {}
+      "blocks": {
+        "left_ingredient_wk4JKG": {
+          "type": "left_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        },
+        "right_ingredient_6QyaaW": {
+          "type": "right_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        },
+        "left_ingredient_jf9Kcf": {
+          "type": "left_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        },
+        "right_ingredient_HPMxTc": {
+          "type": "right_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "left_ingredient_wk4JKG",
+        "right_ingredient_6QyaaW",
+        "left_ingredient_jf9Kcf",
+        "right_ingredient_HPMxTc"
+      ],
+      "settings": {
+        "main_head_text_color": "#000000",
+        "head_text_color": "#000000",
+        "desc_text_color": "#333333",
+        "background_color": "#f0f8e7",
+        "desktop_padding_top": 50,
+        "desktop_padding_bottom": 50,
+        "desktop_margin_top": 20,
+        "desktop_margin_bottom": 20,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 20,
+        "mobile_margin_top": 10,
+        "mobile_margin_bottom": 10
+      }
     }
   },
   "order": [
