@@ -293,16 +293,26 @@ color:{{ section.settings.desc_text_color }} ;
 
 
 
-
+<script>
+  jQuery(document).ready(function($) {
+    $('.ingredients-slider .slider-wrapper').slick({
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      prevArrow: $('.slider-prev'),
+      nextArrow: $('.slider-next')
+    });
+  });
+</script>
 
 
 <script>
 
-$('.ingredients-wrapper').slick({
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 3
-});
+// $('.ingredients-wrapper').slick({
+//   infinite: true,
+//   slidesToShow: 3,
+//   slidesToScroll: 3
+// });
 
   
 // document.addEventListener("DOMContentLoaded", function () {
