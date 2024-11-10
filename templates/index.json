@@ -384,6 +384,14 @@
             "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
+        "left_ingredient_GqAaYc": {
+          "type": "left_ingredient",
+          "settings": {
+            "ingredient_image": "shopify://shop_images/Main_b13ad453-477c-4ed1-9b43-81f3345adfd6.jpg",
+            "ingredient_title": "Slide bot 5",
+            "ingredient_description": ""
+          }
+        },
         "right_ingredient_6QyaaW": {
           "type": "right_ingredient",
           "settings": {
@@ -407,13 +415,38 @@
             "ingredient_title": "Slide bot 4",
             "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
+        },
+        "left_ingredient_xPDa7P": {
+          "type": "left_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        },
+        "right_ingredient_XXhxgc": {
+          "type": "right_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
+        },
+        "right_ingredient_heiHA8": {
+          "type": "right_ingredient",
+          "settings": {
+            "ingredient_title": "",
+            "ingredient_description": ""
+          }
         }
       },
       "block_order": [
         "left_ingredient_wk4JKG",
+        "left_ingredient_GqAaYc",
         "right_ingredient_6QyaaW",
         "left_ingredient_jf9Kcf",
-        "right_ingredient_HPMxTc"
+        "right_ingredient_HPMxTc",
+        "left_ingredient_xPDa7P",
+        "right_ingredient_XXhxgc",
+        "right_ingredient_heiHA8"
       ],
       "settings": {
         "main_product_imagee": "shopify://shop_images/WhatsApp_Image_2024-07-20_at_01.42.59-removebg35.webp",
