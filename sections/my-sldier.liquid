@@ -59,9 +59,9 @@
       <div class="slider-wrapper">
         
          <!-- Left Column Ingredients -->
-    <div class="ingredient-column responsive">
+    <div class="ingredient-column">
       {% for block in section.blocks %}
-          <div class="ingredient">
+          <div class="ingredient responsive">
             <img src="{{ block.settings.ingredient_image | img_url: 'medium' }}" alt="{{ block.settings.ingredient_title }}">
             <div class="ingredient-text">
               <h3>{{ block.settings.ingredient_title }}</h3>
