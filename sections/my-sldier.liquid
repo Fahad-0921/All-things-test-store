@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   let currentIndex = 0;
   const slides = hiddenContainer.querySelectorAll(".ingredient");
-  const slideWidth = slides[0].offsetWidth + 500; // Width of each slide + gap
+  const slideWidth = slides[0].offsetWidth + 100; // Width of each slide + gap
 
   function updateSliderPosition() {
     sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
