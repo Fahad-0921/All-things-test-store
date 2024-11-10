@@ -261,6 +261,31 @@ color:{{ section.settings.desc_text_color }} ;
 }
   
 }
+
+ .ingredients-container {
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+  .ingredient {
+    width: 50%; /* Default width for 2 slides */
+    flex: 0 0 50%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  
+  @media (max-width: 760px) {
+    .ingredient {
+      width: 100%; /* Full width for 1 slide */
+      flex: 0 0 100%;
+    }
+  }
+  
  
 </style>
 
