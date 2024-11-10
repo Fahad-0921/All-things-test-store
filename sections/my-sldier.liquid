@@ -294,79 +294,41 @@ color:{{ section.settings.desc_text_color }} ;
 
 
 <script>
-  jQuery(document).ready(function($) {
-    $('.ingredients-slider').slick({
-      infinite: true,
-      slidesToShow: 3,
-      slidesToScroll: 1,
-      prevArrow: $('.slider-prev'),
-      nextArrow: $('.slider-next')
-    });
+document.addEventListener("DOMContentLoaded", function() {
+  const hiddenContainer = document.querySelector("#hidden-container");
+  const sliderWrapper = hiddenContainer.querySelector(".slider-wrapper");
+  const prevButton = hiddenContainer.querySelector(".slider-prev");
+  const nextButton = hiddenContainer.querySelector(".slider-next");
+
+  let currentIndex = 0;
+  const slides = hiddenContainer.querySelectorAll(".ingredient");
+  const slideWidth = slides[0].offsetWidth + 50; // Width of each slide + gap
+
+  function updateSliderPosition() {
+    sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (currentIndex < slides.length - 1) {
+      currentIndex++;
+      updateSliderPosition();
+    }
   });
-</script>
 
+  prevButton.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSliderPosition();
+    }
+  });
 
-<script>
-
-// $('.ingredients-wrapper').slick({
-//   infinite: true,
-//   slidesToShow: 3,
-//   slidesToScroll: 3
-// });
-
-  
-// document.addEventListener("DOMContentLoaded", function () {
-//   const sliderWrapper = document.querySelector(".slider-wrapper");
-//   const ingredients = document.querySelectorAll(".ingredient");
-//   const prevButton = document.querySelector(".slider-prev");
-//   const nextButton = document.querySelector(".slider-next");
-//   let currentIndex = 1; // Start at the first real slide (skipping the duplicated last slide at index 0)
-
-//   // Update the slider based on the current index
-//   function updateSlider() {
-//     const offset = -currentIndex * 100;
-//     sliderWrapper.style.transform = translateX(${offset}%);
-//     sliderWrapper.style.transition = "transform 0.3s ease";
-//   }
-
-//   // Move to the previous slide
-//   prevButton.addEventListener("click", function () {
-//     if (currentIndex <= 0) {
-//       currentIndex = ingredients.length - 2; // Jump to the last real slide
-//       sliderWrapper.style.transition = "none"; // Disable animation for instant move
-//       updateSlider();
-//       requestAnimationFrame(() => {
-//         sliderWrapper.style.transition = "transform 0.3s ease"; // Re-enable animation
-//         currentIndex--;
-//         updateSlider();
-//       });
-//     } else {
-//       currentIndex--;
-//       updateSlider();
-//     }
-//   });
-
-//   // Move to the next slide
-//   nextButton.addEventListener("click", function () {
-//     if (currentIndex >= ingredients.length - 1) {
-//       currentIndex = 1; // Jump to the first real slide
-//       sliderWrapper.style.transition = "none"; // Disable animation for instant move
-//       updateSlider();
-//       requestAnimationFrame(() => {
-//         sliderWrapper.style.transition = "transform 0.3s ease"; // Re-enable animation
-//         currentIndex++;
-//         updateSlider();
-//       });
-//     } else {
-//       currentIndex++;
-//       updateSlider();
-//     }
-//   });
-
-//   // Initialize the slider to the first real slide
-//   updateSlider();
-// });
-  
+  // Resize observer to update slide width if window is resized
+  window.addEventListener("resize", () => {
+    if (window.innerWidth <= 1020) {
+      sliderWrapper.style.transition = "transform 0.5s ease";
+    }
+  });
+});
 </script>
 
 {% schema %}
