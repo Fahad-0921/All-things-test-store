@@ -403,8 +403,9 @@
         "right_ingredient_HPMxTc": {
           "type": "right_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/gift_card.png",
+            "ingredient_title": "Slide bot 4",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         }
       },
