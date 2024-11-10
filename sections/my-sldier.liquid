@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Function to update slide width and transform position
   function updateSlider() {
     slidesToShow = window.innerWidth <= 760 ? 1 : 2;
-    const slideWidth = 100 / slidesToShow; // Width of each slide
+    const slideWidth = 50 / slidesToShow; // Width of each slide
     slides.forEach(slide => slide.style.flex = `0 0 ${slideWidth}%`);
     sliderWrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
   }
