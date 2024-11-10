@@ -421,21 +421,23 @@
           "settings": {
             "ingredient_image": "shopify://shop_images/sample-normal-wax.png",
             "ingredient_title": "Slide bot 6",
-            "ingredient_description": ""
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
         "right_ingredient_XXhxgc": {
           "type": "right_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/wax-special.png",
+            "ingredient_title": "Slide bot 6",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         },
         "right_ingredient_heiHA8": {
           "type": "right_ingredient",
           "settings": {
-            "ingredient_title": "",
-            "ingredient_description": ""
+            "ingredient_image": "shopify://shop_images/Main_589fc064-24a2-4236-9eaf-13b2bd35d21d.jpg",
+            "ingredient_title": "Slide bot 7",
+            "ingredient_description": "7 November, 2024 • Apps\nFlow: A new Cancel order action replacing deprecated version"
           }
         }
       },
