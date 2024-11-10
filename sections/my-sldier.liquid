@@ -357,13 +357,151 @@ document.addEventListener("DOMContentLoaded", function () {
 
 {% schema %}
 {
-  "name": "My Slider",
+  "name": "Ingredients Section",
   "settings": [
-
+    {
+      "type": "image_picker",
+      "id": "main_product_imagee",
+      "label": "Main Product Image",
+      "info": "Upload the main image displayed in the center."
+    },
+    {
+      "type": "color",
+      "id": "main_head_text_color",
+      "label": "Main Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "head_text_color",
+      "label": "Ingredient Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "desc_text_color",
+      "label": "Ingredient Description Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f0f8e7"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "default": 50,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_top",
+      "label": "Desktop Margin Top",
+      "default": 20,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_bottom",
+      "label": "Desktop Margin Bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "default": 20,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "default": 20,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin_top",
+      "label": "Mobile Margin Top",
+      "default": 10,
+      "min": 0,
+      "max": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin_bottom",
+      "label": "Mobile Margin Bottom",
+      "default": 10,
+      "min": 0,
+      "max": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_ingredient",
+      "name": "Left Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "ingredient_image",
+          "label": "Ingredient Image"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Ingredient Title"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredient_description",
+          "label": "Ingredient Description"
+        }
+      ]
+    },
+    {
+      "type": "right_ingredient",
+      "name": "Right Ingredient",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "ingredient_image",
+          "label": "Ingredient Image"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Ingredient Title"
+        },
+        {
+          "type": "textarea",
+          "id": "ingredient_description",
+          "label": "Ingredient Description"
+        }
+      ]
+    }
   ],
   "presets": [
     {
-      "name": "My Slider"
+      "name": "Ingredients Section",
+      "category": "Custom Sections"
     }
   ]
 }
