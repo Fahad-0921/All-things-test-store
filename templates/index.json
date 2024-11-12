@@ -469,6 +469,34 @@
     },
     "double_image_text_wWHED3": {
       "type": "double-image-text",
+      "blocks": {
+        "collapsible_tab_KmNVU9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "tab_heading": "Default Heading",
+            "tab_content": "Default content for this collapsible tab."
+          }
+        },
+        "collapsible_tab_dLyRrb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "tab_heading": "Default Heading",
+            "tab_content": "Default content for this collapsible tab."
+          }
+        },
+        "collapsible_tab_GEmUJE": {
+          "type": "collapsible_tab",
+          "settings": {
+            "tab_heading": "Default Heading",
+            "tab_content": "Default content for this collapsible tab."
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_KmNVU9",
+        "collapsible_tab_dLyRrb",
+        "collapsible_tab_GEmUJE"
+      ],
       "settings": {
         "large_image": "shopify://shop_images/hydration-slider-greens.webp",
         "show_small_image": true,
