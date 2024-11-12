@@ -1,6 +1,407 @@
+
+<section class="quality-bar-section" id="collapsible-custom-{{ section.id }}">
+    <div class="content-wrapper">
+        <!-- Left Side: Images -->
+        <div class="image-section">
+            <!-- Main Image -->
+            <img src="{{ section.settings.large_image | img_url: '700x' }}" alt="Main product image" class="large-image">
+            
+            {% if section.settings.show_small_image and section.settings.small_image %}
+                <!-- Small Image (conditionally displayed) -->
+                <img src="{{ section.settings.small_image | img_url: '500x' }}" alt="Certification logos" class="small-image">
+            {% endif %}
+        </div>
+
+        <!-- Right Side: Heading and Collapsible Content -->
+        <div class="text-section">
+            <h2 class="section-heading">{{ section.settings.section_heading }}</h2>
+            <div class="collapsible">
+                {% for block in section.blocks %}
+                    <div class="collapsible-item">
+                        <button class="collapsible-header">{{ block.settings.tab_heading }} 
+                  
+                            <svg class="svg-inline--fa fa-plus icon" aria-hidden="true" width="30" height="30" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"></path></svg>
+                      
+                        </button>
+                        <div class="collapsible-content">
+                            <p>{{ block.settings.tab_content }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<style>
+
+
+/* Overall section layout */
+.quality-bar-section {
+    background-color: {{ section.settings.background_color }};
+   color: {{ section.settings.text_color }}!important;
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Default: two-column layout */
+    gap: 40px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+/* Image section layout */
+.image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    /* Ensure images scale smoothly */
+    width: 100%;
+}
+
+.large-image {
+    /* width: 700px;  */
+    height: 100%;
+    margin-bottom: 20px;
+    max-width: 100%; /* Ensure it scales down responsively */
+}
+
+.small-image {
+    width: 80%; /* Set explicit width for small image */
+    height: auto;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+}
+
+/* Text section layout (right-side content) */
+.text-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-heading {
+    font-size: 48px;
+    font-weight: bold;
+    color: {{ section.settings.heading_color }}!important;
+    margin-bottom: 20px;
+}
+
+.collapsible {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.collapsible-item {
+    border-bottom: 1px solid #333;
+    padding: 39px 50px 39px 0;
+}
+
+.collapsible-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: {{ section.settings.heading_color }}!important;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-content {
+    max-height: 0; /* Start with collapsed content */
+    overflow: hidden; /* Hide content initially */
+    padding: 10px 0 10px 0; /* Padding for collapsed state */
+    font-size: 22px;
+    /* color: #333; */
+    transition: max-height 0.5s ease, padding 0.5s ease; /* Smooth transition */
+}
+
+/* Media query for smaller screens (below 1020px) */
+@media (max-width: 1020px) {
+    .content-wrapper {
+        grid-template-columns: 1fr; /* Switch to single column layout */
+    }
+
+    .large-image {
+        width: 100%; /* Make the image take full width */
+        max-width: 100%; /* Ensure it scales correctly */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .text-section {
+        width: 100%; /* Allow the text section to take full width */
+       padding: 20px 30px;
+    }
+
+    .small-image {
+        width: 70%; /* Adjust small image size for smaller screens */
+        bottom: -30px; /* Adjust position */
+    }
+
+
+  .quality-bar-section {
+    padding: 0;
+}
+
+.section-heading{
+  display: none;
+  
+}
+  
+
+
+  
+}
+
+/* Optional styles for smooth transition on content toggle */
+@keyframes slideUp {
+    0% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+  
+</style>
+
+
+
+
+{% style %}
+  #collapsible-custom-{{ section.id }} {
+    background-color: {{ section.settings.background_color }};
+    
+    padding-top:{{ section.settings.desktop_padding_top }}px;
+    padding-bottom:{{ section.settings.desktop_padding_bottom }}px;
+    margin-top:{{ section.settings.desktop_margin_top }}px;
+    margin-bottom:{{ section.settings.desktop_margin_bottom }}px;
+    
+  } 
+
+@media (max-width: 1020px) {
+
+    #collapsible-custom-{{ section.id }} {
+  
+  padding-top:{{ section.settings.mobile_padding_top }}px;
+    padding-bottom:{{ section.settings.mobile_padding_bottom }}px;
+    margin-top:{{ section.settings.mobile_margin_top }}px;
+    margin-bottom:{{ section.settings.mobile_margin_bottom }}px;
+  
+    }
+}
+  
+
+  
+{% endstyle %}
+
+
+
+<script>
+
+document.querySelectorAll('.collapsible-header').forEach(header => {
+    header.addEventListener('click', function() {
+        // Close any other open sections
+        document.querySelectorAll('.collapsible-content').forEach(content => {
+            if (content !== this.nextElementSibling) {
+                content.style.maxHeight = '0'; // Collapse other sections
+                content.previousElementSibling.classList.remove('active');
+                content.closest('.collapsible-item').classList.remove('open-up');
+            }
+        });
+
+        // Toggle the current section
+        this.classList.toggle('active');
+        const content = this.nextElementSibling;
+        const parentItem = this.closest('.collapsible-item');
+        
+        if (content.style.maxHeight === '0px' || !content.style.maxHeight) {
+            content.style.maxHeight = '500px';  // Adjust to the required max height
+            parentItem.classList.add('open-up');
+        } else {
+            content.style.maxHeight = '0';
+            parentItem.classList.remove('open-up');
+        }
+    });
+});
+
+</script>
+
+
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "BTG Image Collapsible",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "large_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_small_image",
+      "label": "Show Small Image",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image",
+      "label": "Small Image",
+      "info": "Upload an image or leave blank to hide the small image."
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Setting the Quality Bar"
+    },
+     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5fbea"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#333333"
+    },
+    {
+      "type":"header",
+      "content":"Section Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+     {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+     {
+      "type": "range",
+      "id": "desktop_margin_top",
+      "label": "Desktop Margin Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "desktop_margin_bottom",
+      "label": "Desktop Margin Bottom",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+     {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_margin_top",
+      "label": "Mobile Margin Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+     {
+      "type": "range",
+      "id": "mobile_margin_bottom",
+      "label": "Mobile Margin Bottom",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
+  ],
+  "blocks": [
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible Content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_heading",
+          "label": "Tab Heading",
+          "default": "Default Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_content",
+          "label": "Tab Content",
+          "default": "Default content for this collapsible tab."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BTG Image Collapsible",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
+
+
+
+
+
+
+
+
