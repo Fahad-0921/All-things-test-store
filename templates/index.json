@@ -466,6 +466,26 @@
         "mobile_margin_top": 10,
         "mobile_margin_bottom": 10
       }
+    },
+    "double_image_text_wWHED3": {
+      "type": "double-image-text",
+      "settings": {
+        "large_image": "shopify://shop_images/hydration-slider-greens.webp",
+        "show_small_image": true,
+        "small_image": "shopify://shop_images/logos-new.png",
+        "section_heading": "Setting the Quality Bar",
+        "background_color": "#f5fbea",
+        "text_color": "#333333",
+        "heading_color": "#333333",
+        "desktop_padding_top": 54,
+        "desktop_padding_bottom": 80,
+        "desktop_margin_top": 90,
+        "desktop_margin_bottom": 75,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "mobile_margin_top": 0,
+        "mobile_margin_bottom": 0
+      }
     }
   },
   "order": [
@@ -477,6 +497,7 @@
     "collapsible_content_nDWVkH",
     "product_bundle_CjjT6E",
     "bundle_and_save_yWYpdE",
-    "my_sldier_mxzP77"
+    "my_sldier_mxzP77",
+    "double_image_text_wWHED3"
   ]
 }
