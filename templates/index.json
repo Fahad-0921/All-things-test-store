@@ -500,14 +500,14 @@
         "text_color": "#333333",
         "heading_color": "#333333",
         "header_color": "#000",
-        "desktop_padding_top": 0,
-        "desktop_padding_bottom": 0,
-        "desktop_margin_top": 0,
-        "desktop_margin_bottom": 0,
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0,
-        "mobile_margin_top": 0,
-        "mobile_margin_bottom": 0
+        "desktop_padding_top": 72,
+        "desktop_padding_bottom": 64,
+        "desktop_margin_top": 69,
+        "desktop_margin_bottom": 66,
+        "mobile_padding_top": 55,
+        "mobile_padding_bottom": 44,
+        "mobile_margin_top": 65,
+        "mobile_margin_bottom": 66
       }
     }
   },
