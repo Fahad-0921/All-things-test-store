@@ -16,7 +16,7 @@
           "type": "heading",
           "settings": {
             "title": "Digital Media Agency",
-            "block_heading_color": "#ffffff",
+            "block_heading_color": "#334fb4",
             "block_heading_size": "48px",
             "enable_custom_font": true,
             "custom_font": "antique_olive_n4",
@@ -461,6 +461,46 @@
         "mobile_margin_top": 0,
         "mobile_margin_bottom": 0
       }
+    },
+    "collection_slider_zFJnnQ": {
+      "type": "collection-slider",
+      "blocks": {
+        "featured_collection_9Nf3EL": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_FUk9hf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "featured_collection_KHmX8h": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_9Nf3EL",
+        "featured_collection_FUk9hf",
+        "featured_collection_KHmX8h"
+      ],
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 1,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -472,6 +512,7 @@
     "product_bundle_CjjT6E",
     "bundle_and_save_yWYpdE",
     "my_sldier_mxzP77",
-    "double_image_text_wWHED3"
+    "double_image_text_wWHED3",
+    "collection_slider_zFJnnQ"
   ]
 }
