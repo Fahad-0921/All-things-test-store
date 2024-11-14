@@ -414,54 +414,6 @@
         "mobile_margin_bottom": 10
       }
     },
-    "double_image_text_wWHED3": {
-      "type": "double-image-text",
-      "blocks": {
-        "collapsible_tab_KmNVU9": {
-          "type": "collapsible_tab",
-          "settings": {
-            "tab_heading": "Default Heading",
-            "tab_content": "Default content for this collapsible tab."
-          }
-        },
-        "collapsible_tab_dLyRrb": {
-          "type": "collapsible_tab",
-          "settings": {
-            "tab_heading": "Default Heading",
-            "tab_content": "Default content for this collapsible tab."
-          }
-        },
-        "collapsible_tab_GEmUJE": {
-          "type": "collapsible_tab",
-          "settings": {
-            "tab_heading": "Default Heading",
-            "tab_content": "Default content for this collapsible tab."
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_tab_KmNVU9",
-        "collapsible_tab_dLyRrb",
-        "collapsible_tab_GEmUJE"
-      ],
-      "settings": {
-        "large_image": "shopify://shop_images/hydration-slider-greens.webp",
-        "show_small_image": true,
-        "small_image": "shopify://shop_images/logos-new.png",
-        "section_heading": "Setting the Quality Bar",
-        "background_color": "#f5fbea",
-        "text_color": "#333333",
-        "heading_color": "#333333",
-        "desktop_padding_top": 54,
-        "desktop_padding_bottom": 80,
-        "desktop_margin_top": 90,
-        "desktop_margin_bottom": 75,
-        "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0,
-        "mobile_margin_top": 0,
-        "mobile_margin_bottom": 0
-      }
-    },
     "collection_slider_zFJnnQ": {
       "type": "collection-slider",
       "blocks": {
@@ -512,7 +464,6 @@
     "product_bundle_CjjT6E",
     "bundle_and_save_yWYpdE",
     "my_sldier_mxzP77",
-    "double_image_text_wWHED3",
     "collection_slider_zFJnnQ"
   ]
 }
