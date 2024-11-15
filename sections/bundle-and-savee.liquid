@@ -1,7 +1,10 @@
 {% assign discount_percentage = settings.discount_percentage | default: 15 %}
 
-{% assign product_1 = all_products[settings.product_1_id] %}
-{% assign product_2 = all_products[settings.product_2_id] %}
+{% assign product_1_handle = settings.product_1_handle %}
+{% assign product_2_handle = settings.product_2_handle %}
+
+{% assign product_1 = all_products[product_1_handle] %}
+{% assign product_2 = all_products[product_2_handle] %}
 
 {% if product_1 and product_2 %}
   {% assign product_1_price = product_1.price | divided_by: 100 %}
