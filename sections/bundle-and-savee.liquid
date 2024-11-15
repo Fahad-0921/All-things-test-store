@@ -57,6 +57,7 @@
 
 
 <style>
+  
 .bundle-section {
     border: 1px solid #ddd;
     padding: 20px;
@@ -111,21 +112,32 @@
 </style>
 
 <script>
-  
-document.querySelector('.add-to-cart').addEventListener('click', function() {
-  fetch('/cart/add.js', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      items: [
-        { id: {{ product_1_variant_id }}, quantity: 1 },
-        { id: {{ product_2_variant_id }}, quantity: 1 }
-      ]
-    })
-  }).then(() => location.reload());
+document.querySelector('.add-to-cart-button').addEventListener('click', function() {
+    var product1Id = this.getAttribute('data-product1-id');
+    var product2Id = this.getAttribute('data-product2-id');
+
+    fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            items: [
+                { id: product1Id, quantity: 1 },
+                { id: product2Id, quantity: 1 }
+            ]
+        })
+    }).then(response => response.json())
+      .then(data => {
+        if (Shopify && Shopify.theme && Shopify.theme.name === "Dawn") {
+            // If using Shopify Dawn theme, open the cart drawer
+            document.querySelector('cart-drawer').classList.add('is-open');
+        } else {
+            // Redirect to cart page if cart drawer is not available
+            window.location.href = '/cart';
+        }
+    }).catch(error => console.error('Error:', error));
 });
-  
 </script>
+
 
 
 
