@@ -127,17 +127,25 @@
     overflow: hidden; 
     padding: 10px 0 10px 0; 
     font-size: 22px;
-    transition: max-height 0.8s ease, padding 0.8s ease; /
+    transition: max-height 0.8s ease, padding 0.8s ease;
 }
 
-@media (max-width: 1400px) {
+
+  
+
+@media (max-width: 1370px) {
 
   .collapsible-item {
     padding: 20px 30px 20px 0;
 }
 
-    .image-section {
-    height: unset;
+.image-section {
+    height: 700px;
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
 
 }
 
@@ -150,12 +158,17 @@
 }
 
 
-.small-image {
+/* .small-image {
     bottom: -45px;
 }
-  
-  
+   */
 
+    .small-image {
+        bottom: -45px;
+        position: absolute;
+        /* top: 0; */
+        bottom: 66px;
+    }
   
 
 }  
@@ -163,7 +176,7 @@
   
 
 /* Media query for smaller screens (below 1020px) */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
     .content-wrapper {
         grid-template-columns: 1fr;
     }
@@ -201,6 +214,9 @@
 
 }
 
+
+
+  
 @media (max-width: 500px) {
     .collapsible-header {
         font-size: 20px;
