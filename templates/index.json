@@ -501,7 +501,7 @@
         "background_color": "#f5fbea",
         "text_color": "#333333",
         "heading_color": "#333333",
-        "header_color": "#000",
+        "header_color": "#000000",
         "desktop_padding_top": 0,
         "desktop_padding_bottom": 0,
         "desktop_margin_top": 0,
@@ -511,6 +511,10 @@
         "mobile_margin_top": 0,
         "mobile_margin_bottom": 0
       }
+    },
+    "bundle_and_savee_bmPAhM": {
+      "type": "bundle-and-savee",
+      "settings": {}
     }
   },
   "order": [
@@ -523,6 +527,7 @@
     "bundle_and_save_yWYpdE",
     "my_sldier_mxzP77",
     "collection_slider_zFJnnQ",
-    "double_image_text_cwVwP3"
+    "double_image_text_cwVwP3",
+    "bundle_and_savee_bmPAhM"
   ]
 }
