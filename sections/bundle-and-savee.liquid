@@ -95,12 +95,26 @@ document.querySelector('.add-to-cart').addEventListener('click', function() {
 </script>
 
 
-
 {% schema %}
 {
   "name": "Bundle & Save",
   "settings": [
-
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Select First Product"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Select Second Product"
+    },
+    {
+      "type": "number",
+      "id": "discount_percentage",
+      "label": "Discount Percentage",
+      "default": 15
+    }
   ],
   "presets": [
     {
