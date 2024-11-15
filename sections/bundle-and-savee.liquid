@@ -132,6 +132,8 @@ document.querySelector('.add-to-cart').addEventListener('click', function() {
 </script>
 
 
+
+
 {% schema %}
 {
   "name": "Bundle & Save",
@@ -139,21 +141,24 @@ document.querySelector('.add-to-cart').addEventListener('click', function() {
     {
       "type": "product",
       "id": "product_1",
-      "label": "Select First Product"
+      "label": "First Product"
     },
     {
       "type": "product",
       "id": "product_2",
-      "label": "Select Second Product"
+      "label": "Second Product"
     },
-    {
-      "type": "number",
-      "id": "discount_percentage",
-      "label": "Discount Percentage",
-      "default": 15
-    }
+       {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "default": 0,
+      "unit": "px",
+      "min": 0,
+      "max": 100
+    },
   ],
-  "presets": [
+    "presets": [
     {
       "name": "Bundle & Save"
     }
