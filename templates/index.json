@@ -515,7 +515,7 @@
     "bundle_and_savee_bmPAhM": {
       "type": "bundle-and-savee",
       "settings": {
-        "product_1": "",
+        "product_1": "soursop-1",
         "product_2": "",
         "discount_percentage": 15
       }
