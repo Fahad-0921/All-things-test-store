@@ -53,15 +53,10 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
-    },
-    "product_bundle_QAiERt": {
-      "type": "product-bundle",
-      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "product_bundle_QAiERt"
+    "header"
   ]
 }
