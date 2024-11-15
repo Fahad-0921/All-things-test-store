@@ -1,61 +1,56 @@
 {% assign discount_percentage = settings.discount_percentage | default: 15 %}
 
-{% assign product_1_handle = settings.product_1_handle %}
-{% assign product_2_handle = settings.product_2_handle %}
-
-{% assign product_1 = all_products[product_1_handle] %}
-{% assign product_2 = all_products[product_2_handle] %}
-
-{% if product_1 and product_2 %}
-  {% assign product_1_price = product_1.price | divided_by: 100 %}
-  {% assign product_2_price = product_2.price | divided_by: 100 %}
-
-  {% assign discount_multiplier = 1.0 | minus: discount_percentage | divided_by: 100 %}
-
-  {% assign product_1_discounted_price = product_1_price | times: discount_multiplier %}
-  {% assign product_2_discounted_price = product_2_price | times: discount_multiplier %}
-
-  {% assign original_total = product_1_price | plus: product_2_price %}
-  {% assign discounted_total = original_total | times: discount_multiplier %}
-{% endif %}
-
 <div class="bundle-save-section">
   <h3>BUNDLE AND SAVE {{ discount_percentage }}%</h3>
   
   <div class="bundle-products">
-    {% if product_1 and product_2 %}
-      <div class="product">
-        <img src="{{ product_1.featured_image | img_url: 'medium' }}" alt="{{ product_1.title }}">
-        <p>{{ product_1.title }} 
-          <span class="discounted-price">${{ product_1_discounted_price | money }}</span> 
-          <span class="original-price">${{ product_1_price | money }}</span>
-        </p>
-      </div>
-      <div class="plus">+</div>
-      <div class="product">
-        <img src="{{ product_2.featured_image | img_url: 'medium' }}" alt="{{ product_2.title }}">
-        <p>{{ product_2.title }} 
-          <span class="discounted-price">${{ product_2_discounted_price | money }}</span> 
-          <span class="original-price">${{ product_2_price | money }}</span>
-        </p>
-      </div>
-    {% else %}
-      <p>Please select two products in the theme editor to display the bundle.</p>
-    {% endif %}
+    {% for product_block in block %}
+      {% assign product = product_block.settings.product %}
+      {% if product %}
+        {% assign product_price = product.price | divided_by: 100 %}
+        {% assign discount_multiplier = 1.0 | minus: discount_percentage | divided_by: 100 %}
+        {% assign product_discounted_price = product_price | times: discount_multiplier %}
+
+        <div class="product">
+          <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+          <p>{{ product.title }} 
+            <span class="discounted-price">${{ product_discounted_price | money }}</span> 
+            <span class="original-price">${{ product_price | money }}</span>
+          </p>
+        </div>
+        
+        {% if forloop.index < forloop.length %}
+          <div class="plus">+</div>
+        {% endif %}
+        
+      {% else %}
+        <p>Select a product in the theme editor.</p>
+      {% endif %}
+    {% endfor %}
   </div>
-  
+
   <div class="total-price">
-    {% if product_1 and product_2 %}
-      <p>Total Price: 
-        <span class="discounted-total">${{ discounted_total | money }}</span> 
-        <span class="original-total">${{ original_total | money }}</span>
-      </p>
-    {% endif %}
+    {% assign original_total = 0 %}
+    {% assign discounted_total = 0 %}
+
+    {% for product_block in block %}
+      {% assign product = product_block.settings.product %}
+      {% if product %}
+        {% assign product_price = product.price | divided_by: 100 %}
+        {% assign product_discounted_price = product_price | times: discount_multiplier %}
+        
+        {% assign original_total = original_total | plus: product_price %}
+        {% assign discounted_total = discounted_total | plus: product_discounted_price %}
+      {% endif %}
+    {% endfor %}
+    
+    <p>Total Price: 
+      <span class="discounted-total">${{ discounted_total | money }}</span> 
+      <span class="original-total">${{ original_total | money }}</span>
+    </p>
   </div>
   
-  {% if product_1 and product_2 %}
-    <button class="add-to-cart">Add to Cart</button>
-  {% endif %}
+  <button class="add-to-cart">Add to Cart</button>
 </div>
 
 
