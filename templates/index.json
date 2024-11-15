@@ -515,8 +515,8 @@
     "bundle_and_savee_bmPAhM": {
       "type": "bundle-and-savee",
       "settings": {
-        "product_1": "the-collection-snowboard-oxygen",
-        "product_2": "the-hidden-snowboard",
+        "product_1": "",
+        "product_2": "",
         "discount_percentage": 15
       }
     }
