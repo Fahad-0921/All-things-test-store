@@ -1,21 +1,50 @@
+{% assign discount_percentage = settings.discount_percentage | default: 15 %}
+
+{% assign product_1_price = product_1.price | divided_by: 100 %}
+{% assign product_2_price = product_2.price | divided_by: 100 %}
+
+{% assign discount_multiplier = 1.0 | minus: discount_percentage | divided_by: 100 %}
+
+{% assign product_1_discounted_price = product_1_price | times: discount_multiplier %}
+{% assign product_2_discounted_price = product_2_price | times: discount_multiplier %}
+
+{% assign original_total = product_1_price | plus: product_2_price %}
+{% assign discounted_total = original_total | times: discount_multiplier %}
+
 <div class="bundle-save-section">
-  <h3>BUNDLE AND SAVE 15%</h3>
+  <h3>BUNDLE AND SAVE {{ discount_percentage }}%</h3>
+  
   <div class="bundle-products">
-    <div class="product">
-      <img src="https://cdn.shopify.com/s/files/1/0637/4703/1087/files/WhatsApp_Image_2024-07-20_at_01.42.59-removebg35.webp?v=1724257317" alt="BetterLungs® Tea">
-      <p>BetterLungs® Tea <span class="discounted-price">$16.96</span> <span class="original-price">$19.95</span></p>
-    </div>
-    <div class="plus">+</div>
-    <div class="product">
-      <img src="https://cdn.shopify.com/s/files/1/0637/4703/1087/files/wax-special.png?v=1723474269" alt="BetterLungs® Sea Moss Gummies">
-      <p>BetterLungs® Sea Moss Gummies <span class="discounted-price">$33.96</span> <span class="original-price">$39.95</span></p>
-    </div>
+    {% if product_1 and product_2 %}
+      <div class="product">
+        <img src="{{ product_1.featured_image | img_url: 'medium' }}" alt="{{ product_1.title }}">
+        <p>{{ product_1.title }} 
+          <span class="discounted-price">${{ product_1_discounted_price | money }}</span> 
+          <span class="original-price">${{ product_1_price | money }}</span>
+        </p>
+      </div>
+      <div class="plus">+</div>
+      <div class="product">
+        <img src="{{ product_2.featured_image | img_url: 'medium' }}" alt="{{ product_2.title }}">
+        <p>{{ product_2.title }} 
+          <span class="discounted-price">${{ product_2_discounted_price | money }}</span> 
+          <span class="original-price">${{ product_2_price | money }}</span>
+        </p>
+      </div>
+    {% endif %}
   </div>
+  
   <div class="total-price">
-    <p>Total Price: <span class="discounted-total">$50.92</span> <span class="original-total">$59.90</span></p>
+    <p>Total Price: 
+      <span class="discounted-total">${{ discounted_total | money }}</span> 
+      <span class="original-total">${{ original_total | money }}</span>
+    </p>
   </div>
+  
   <button class="add-to-cart">Add to Cart</button>
 </div>
+
+
 
 <style>
 .bundle-save-section {
