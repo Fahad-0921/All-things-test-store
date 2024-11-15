@@ -511,14 +511,6 @@
         "mobile_margin_top": 0,
         "mobile_margin_bottom": 0
       }
-    },
-    "bundle_and_savee_bmPAhM": {
-      "type": "bundle-and-savee",
-      "settings": {
-        "product_1": "soursop-1",
-        "product_2": "the-collection-snowboard-oxygen",
-        "discount_percentage": 15
-      }
     }
   },
   "order": [
@@ -531,7 +523,6 @@
     "bundle_and_save_yWYpdE",
     "my_sldier_mxzP77",
     "collection_slider_zFJnnQ",
-    "double_image_text_cwVwP3",
-    "bundle_and_savee_bmPAhM"
+    "double_image_text_cwVwP3"
   ]
 }
