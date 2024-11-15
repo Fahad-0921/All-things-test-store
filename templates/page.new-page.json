@@ -39,16 +39,11 @@
         "product_5": "the-multi-location-snowboard",
         "product_6": "the-hidden-snowboard"
       }
-    },
-    "product_bundle_f3nQWQ": {
-      "type": "product-bundle",
-      "settings": {}
     }
   },
   "order": [
     "main",
     "custom_banner_Akzm4P",
-    "product_grid_QBmXAk",
-    "product_bundle_f3nQWQ"
+    "product_grid_QBmXAk"
   ]
 }
