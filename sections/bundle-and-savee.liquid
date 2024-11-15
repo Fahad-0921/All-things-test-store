@@ -1,3 +1,100 @@
+<div class="bundle-save-section">
+  <h3>BUNDLE AND SAVE 15%</h3>
+  <div class="bundle-products">
+    <div class="product">
+      <img src="{{ 'betterlungs-tea.jpg' | asset_url }}" alt="BetterLungs® Tea">
+      <p>BetterLungs® Tea <span class="discounted-price">$16.96</span> <span class="original-price">$19.95</span></p>
+    </div>
+    <div class="plus">+</div>
+    <div class="product">
+      <img src="{{ 'sea-moss-gummies.jpg' | asset_url }}" alt="BetterLungs® Sea Moss Gummies">
+      <p>BetterLungs® Sea Moss Gummies <span class="discounted-price">$33.96</span> <span class="original-price">$39.95</span></p>
+    </div>
+  </div>
+  <div class="total-price">
+    <p>Total Price: <span class="discounted-total">$50.92</span> <span class="original-total">$59.90</span></p>
+  </div>
+  <button class="add-to-cart">Add to Cart</button>
+</div>
+
+<style>
+.bundle-save-section {
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.bundle-save-section h3 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bundle-products {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.product img {
+  width: 80px;
+  height: auto;
+}
+
+.discounted-price {
+  color: red;
+  font-weight: bold;
+}
+
+.original-price, .original-total {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.total-price {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.add-to-cart {
+  display: block;
+  background-color: #1a3d2e;
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+  
+</style>
+
+<script>
+document.querySelector('.add-to-cart').addEventListener('click', function() {
+  fetch('/cart/add.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      items: [
+        { id: {{ product_1_variant_id }}, quantity: 1 },
+        { id: {{ product_2_variant_id }}, quantity: 1 }
+      ]
+    })
+  }).then(() => location.reload());
+});
+
+
+  
+</script>
+
+
+
 {% schema %}
 {
   "name": "Bundle & Save",
