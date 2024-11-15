@@ -1,15 +1,20 @@
 {% assign discount_percentage = settings.discount_percentage | default: 15 %}
 
-{% assign product_1_price = product_1.price | divided_by: 100 %}
-{% assign product_2_price = product_2.price | divided_by: 100 %}
+{% assign product_1 = all_products[settings.product_1_id] %}
+{% assign product_2 = all_products[settings.product_2_id] %}
 
-{% assign discount_multiplier = 1.0 | minus: discount_percentage | divided_by: 100 %}
+{% if product_1 and product_2 %}
+  {% assign product_1_price = product_1.price | divided_by: 100 %}
+  {% assign product_2_price = product_2.price | divided_by: 100 %}
 
-{% assign product_1_discounted_price = product_1_price | times: discount_multiplier %}
-{% assign product_2_discounted_price = product_2_price | times: discount_multiplier %}
+  {% assign discount_multiplier = 1.0 | minus: discount_percentage | divided_by: 100 %}
 
-{% assign original_total = product_1_price | plus: product_2_price %}
-{% assign discounted_total = original_total | times: discount_multiplier %}
+  {% assign product_1_discounted_price = product_1_price | times: discount_multiplier %}
+  {% assign product_2_discounted_price = product_2_price | times: discount_multiplier %}
+
+  {% assign original_total = product_1_price | plus: product_2_price %}
+  {% assign discounted_total = original_total | times: discount_multiplier %}
+{% endif %}
 
 <div class="bundle-save-section">
   <h3>BUNDLE AND SAVE {{ discount_percentage }}%</h3>
@@ -31,18 +36,25 @@
           <span class="original-price">${{ product_2_price | money }}</span>
         </p>
       </div>
+    {% else %}
+      <p>Please select two products in the theme editor to display the bundle.</p>
     {% endif %}
   </div>
   
   <div class="total-price">
-    <p>Total Price: 
-      <span class="discounted-total">${{ discounted_total | money }}</span> 
-      <span class="original-total">${{ original_total | money }}</span>
-    </p>
+    {% if product_1 and product_2 %}
+      <p>Total Price: 
+        <span class="discounted-total">${{ discounted_total | money }}</span> 
+        <span class="original-total">${{ original_total | money }}</span>
+      </p>
+    {% endif %}
   </div>
   
-  <button class="add-to-cart">Add to Cart</button>
+  {% if product_1 and product_2 %}
+    <button class="add-to-cart">Add to Cart</button>
+  {% endif %}
 </div>
+
 
 
 
@@ -98,9 +110,6 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
-
-
   
 </style>
 
