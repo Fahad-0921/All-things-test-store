@@ -28,7 +28,6 @@
         <p>Select a product in the theme editor.</p>
       {% endif %}
     {% endfor %}
-    
   </div>
 
   <div class="total-price">
@@ -76,7 +75,6 @@
 
 .bundle-item {
     text-align: center;
-  
 }
 
 .plus-sign {
@@ -114,7 +112,6 @@
 </style>
 
 <script>
-  
 document.querySelector('.add-to-cart-button').addEventListener('click', function() {
     var product1Id = this.getAttribute('data-product1-id');
     var product2Id = this.getAttribute('data-product2-id');
@@ -139,7 +136,6 @@ document.querySelector('.add-to-cart-button').addEventListener('click', function
         }
     }).catch(error => console.error('Error:', error));
 });
-  
 </script>
 
 
