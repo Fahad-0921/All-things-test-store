@@ -375,9 +375,9 @@ function openCity(evt, cityName) {
     evt.currentTarget.classList.add("active");
 
     if (cityName === "Good") {
-        slider.value = 90;  
+        slider.value = 100;  
     } else if (cityName === "Bad") {
-        slider.value = 10;
+        slider.value = 0;
     }
     moveDivisor();
 }
@@ -387,7 +387,7 @@ document.querySelectorAll('.tablinks').forEach(tab => {
         var activeTab = document.querySelector('.tablinks.active');
         if (activeTab) {
             var tabName = activeTab.innerText.trim().toLowerCase();
-            var tabValue = tabName === 'good' ? 90 : 10;
+            var tabValue = tabName === 'good' ? 100 : 0;
             slider.value = tabValue;
             moveDivisor();
         }
