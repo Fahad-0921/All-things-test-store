@@ -286,109 +286,90 @@ input[type=range]::-moz-range-track {
  </style>
 
 <script>
-    var divisor = document.getElementById("divisor"),
-        handle = document.getElementById("handle"),
-        slider = document.getElementById("slider");
+var divisor = document.getElementById("divisor"),
+    handle = document.getElementById("handle"),
+    slider = document.getElementById("slider");
 
-    function moveDivisor() {
-        var value = slider.value;
+function moveDivisor() {
+    var value = slider.value;
 
-        // Update divisor and handle position
-        handle.style.left = value + "%";
-        divisor.style.width = value + "%";
+    // Update divisor and handle position
+    handle.style.left = value + "%";
+    divisor.style.width = value + "%";
 
-        // Update opacity for text
-        var opacity = value / 100;
-        var complementaryOpacity = 1 - opacity;
-        document.getElementById("left").style.opacity = opacity;
-        document.getElementById("right").style.opacity = complementaryOpacity;
+    // Update opacity for text
+    var opacity = value / 100;
+    var complementaryOpacity = 1 - opacity;
+    document.getElementById("left").style.opacity = opacity;
+    document.getElementById("right").style.opacity = complementaryOpacity;
 
-        // Determine active tab based on slider value
-        var activeTab, inactiveTab;
+    // Determine active tab based on slider value
+    var activeTab, inactiveTab;
 
-        if (value < 50) {
-            activeTab = "Bad";
-            inactiveTab = "Good";
-        } else {
-            activeTab = "Good";
-            inactiveTab = "Bad";
-        }
-
-        // Highlight the active tab
-        document.getElementById(activeTab).style.display = "block";
-        document.getElementById(inactiveTab).style.display = "none";
-
-        // Update tab buttons
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
+    if (value < 50) {
+        activeTab = "Bad";
+        inactiveTab = "Good";
+    } else {
+        activeTab = "Good";
+        inactiveTab = "Bad";
     }
 
-    // Function to handle dragging the divisor
-    function startDragging(e) {
-        e.preventDefault();
-        document.addEventListener("mousemove", dragging);
-        document.addEventListener("mouseup", stopDragging);
+    // Highlight the active tab
+    document.getElementById(activeTab).style.display = "block";
+    document.getElementById(inactiveTab).style.display = "none";
+
+    // Update tab buttons
+    var tablinks = document.getElementsByClassName("tablinks");
+    for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
+}
+
+// Function to handle tab switching manually (clicking on tabs)
+function openCity(evt, cityName) {
+    // Hide all tab content
+    var tabcontent = document.getElementsByClassName("tabcontent");
+    for (var i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
 
-    function dragging(e) {
-        var rect = slider.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-        slider.value = value;
-        moveDivisor();
+    // Remove the "active" class from all buttons
+    var tablinks = document.getElementsByClassName("tablinks");
+    for (var i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
     }
 
-    function stopDragging() {
-        document.removeEventListener("mousemove", dragging);
-        document.removeEventListener("mouseup", stopDragging);
+    // Show the current tab and add the "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+
+    // Update the slider based on the tab clicked
+    if (cityName === "Good") {
+        slider.value = 75;  // Adjust the value to your preferred starting point for "Good"
+    } else if (cityName === "Bad") {
+        slider.value = 25;  // Adjust the value to your preferred starting point for "Bad"
     }
+    moveDivisor();
+}
 
-    window.onload = function () {
-        moveDivisor();
+// Automatically open the default tab (Good)
+document.getElementById("defaultOpen").click();
 
-        // Add the dragging functionality to the divisor
-        divisor.addEventListener("mousedown", startDragging);
-
-        // Ensure the original slider functionality works
-        slider.addEventListener("input", moveDivisor);
-    };
-
-    // Updated openTab function for manual tab switching
-    function openTab(evt, tabName) {
-        // Hide all tab contents
-        var tabcontents = document.getElementsByClassName("tabcontent");
-        for (var i = 0; i < tabcontents.length; i++) {
-            tabcontents[i].style.display = "none";
+// Update divisor when switching tabs manually
+document.querySelectorAll('.tablinks').forEach(tab => {
+    tab.addEventListener('click', function() {
+        // Get the active tab
+        var activeTab = document.querySelector('.tablinks.active');
+        if (activeTab) {
+            var tabName = activeTab.innerText.trim().toLowerCase();
+            var tabValue = tabName === 'good' ? 75 : 25;  // Adjust tab value as needed
+            slider.value = tabValue;
+            moveDivisor();
         }
+    });
+});
 
-        // Remove the active class from all tab links
-        var tablinks = document.getElementsByClassName("tablinks");
-        for (var i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-
-        // Show the selected tab content
-        document.getElementById(tabName).style.display = "block";
-
-        // Add the active class to the clicked tab link
-        evt.currentTarget.classList.add("active");
-
-        // Update slider position based on the selected tab
-        if (tabName === "Bad") {
-            slider.value = 25; // Adjust this value for alignment
-        } else if (tabName === "Good") {
-            slider.value = 75; // Adjust this value for alignment
-        }
-
-        // Explicitly update the divisor and handle
-        moveDivisor();
-    }
-
-    // Simulate default tab opening on page load
-    document.getElementById("defaultOpen").click();
 </script>
 
 
