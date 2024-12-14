@@ -387,7 +387,7 @@ document.querySelectorAll('.tablinks').forEach(tab => {
         var activeTab = document.querySelector('.tablinks.active');
         if (activeTab) {
             var tabName = activeTab.innerText.trim().toLowerCase();
-            var tabValue = tabName === 'good' ? 75 : 25;
+            var tabValue = tabName === 'good' ? 90 : 10;
             slider.value = tabValue;
             moveDivisor();
         }
