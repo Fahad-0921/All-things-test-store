@@ -282,33 +282,27 @@ input[type=range]::-moz-range-track {
       }
    }
  </style>
- <script>
-   var divisor = document.getElementById("divisor"),
+
+<script>
+  var divisor = document.getElementById("divisor"),
     handle = document.getElementById("handle"),
     slider = document.getElementById("slider");
-   var goodDiv = document.getElementById("good");
+  var goodDiv = document.getElementById("good");
   var badDiv = document.getElementById("bad");
 
-function moveDivisor() {
-  if(slider.value < 50){
-    //document.getElementById("left").style.opacity = 0.5;
-    console.log("left")
-    badDiv.style.color="red"
-    badDiv.style.fontSize = 35 + 0.4 * (100 - slider.value) + "px";
-    
-    //goodDiv.style.fontSize = slider.value + "px";
-  }
-  else{
-   //document.getElementById("right").style.opacity = 0.5;
-    console.log("right")
-    goodDiv.style.color="Green"
-    goodDiv.style.fontSize = 35 + 0.4 * slider.value + "px";
-    //badDiv.style.fontSize = slider.value + "px";
-  }
-  
-  var value = slider.value;
-  var opacity = value / 100;
-  var complementaryOpacity = 1 - opacity;
+  function moveDivisor(value) {
+    if (value < 50) {
+      console.log("left");
+      badDiv.style.color = "red";
+      badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
+    } else {
+      console.log("right");
+      goodDiv.style.color = "green";
+      goodDiv.style.fontSize = 35 + 0.4 * value + "px";
+    }
+
+    var opacity = value / 100;
+    var complementaryOpacity = 1 - opacity;
 
     document.getElementById("left").style.opacity = opacity;
     document.getElementById("right").style.opacity = complementaryOpacity;
@@ -316,91 +310,53 @@ function moveDivisor() {
     console.log("Value: " + value);
     console.log("Left Opacity: " + opacity);
     console.log("Right Opacity: " + complementaryOpacity);
-  
-  handle.style.left = slider.value+"%";
-  divisor.style.width = slider.value+"%";
-}
 
-window.onload = function() {
-	moveDivisor();
-};
-   function openCity(evt, cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-   document.getElementById("defaultOpen").click();
-
- </script>
-<script>
-const slider = document.getElementById("slider");
-const divisor = document.getElementById("divisor");
-const handle = document.getElementById("handle");
-
-let isDragging = false; // Track mouse drag
-let offsetX; // To calculate accurate position
-
-// Update divisor based on slider input
-function moveDivisor() {
-  const value = slider.value;
-  divisor.style.width = value + "%";
-  handle.style.left = value + "%";
-}
-
-// Function to move divisor and handle during mouse drag
-function updateDivisor(clientX) {
-  const container = document.getElementById("comparison");
-  const rect = container.getBoundingClientRect();
-  let percentage = ((clientX - rect.left) / rect.width) * 100;
-
-  // Constrain the divisor between 0% and 100%
-  if (percentage < 0) percentage = 0;
-  if (percentage > 100) percentage = 100;
-
-  divisor.style.width = percentage + "%";
-  handle.style.left = percentage + "%";
-  slider.value = percentage; // Sync with range slider
-}
-
-// Start dragging when clicking anywhere on divisor or handle
-divisor.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  offsetX = e.clientX;
-  e.preventDefault();
-});
-
-handle.addEventListener("mousedown", (e) => {
-  isDragging = true;
-  offsetX = e.clientX;
-  e.preventDefault();
-});
-
-// Mouse move event to update divisor width
-document.addEventListener("mousemove", (e) => {
-  if (isDragging) {
-    updateDivisor(e.clientX);
+    handle.style.left = value + "%";
+    divisor.style.width = value + "%";
   }
-});
 
-// Stop dragging on mouse up
-document.addEventListener("mouseup", () => {
-  isDragging = false;
-});
+  function startDrag(e) {
+    e.preventDefault();
+    document.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", stopDrag);
+  }
 
-// Sync slider movement with input range changes
-slider.addEventListener("input", moveDivisor);
+  function dragging(e) {
+    var rect = slider.getBoundingClientRect();
+    var offsetX = e.clientX - rect.left;
+    var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+    slider.value = value;
+    moveDivisor(value);
+  }
 
-// Initialize position
-moveDivisor();
+  function stopDrag() {
+    document.removeEventListener("mousemove", dragging);
+    document.removeEventListener("mouseup", stopDrag);
+  }
+
+  window.onload = function () {
+    moveDivisor(slider.value);
+    handle.addEventListener("mousedown", startDrag);
+    divisor.addEventListener("mousedown", startDrag);
+  };
+
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  document.getElementById("defaultOpen").click();
 </script>
+
 
 
 
