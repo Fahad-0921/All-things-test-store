@@ -1,6 +1,359 @@
+<div style="max-width:1000px;padding:0px 40px;margin:20px auto;text-align:center">
+  <h2  style="font-size:45px;margin:20px 0px" >How should my microbiome look like?</h2>
+
+  <p style="font-size:32px;color:#fe2222">  Move the slider from left to right to go from <b>BAD</b> to <B>GOOD</B>
+     </p>
+ 
+</div>
+<div class="comparison-container">
+ 
+  <div id="left" class="leftText">
+          <h4 id="good" style="font-size:35px;color:green" >Good</h4>
+        <hr>
+      <ul style="margin-left: 20px; list-style-type: none; padding: 0; margin: 0;">
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>This microbiome profile belongs to someone who eats a healthy, varied diet of mostly fresh, unprocessed food.</li>
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>The diverse colors indicate a balance of different bacteria, with no single type dominating.</li>
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>Good bacteria thrive, keeping harmful ones in check.</li>
+</ul>
+  </div>
+  <div id="right" class="rightText">
+    
+     <h4 id="bad" style="font-size:35px;color:red; padding-left:10px;">Bad </h4>
+    <hr>
+    <ul style="margin-left: 20px; list-style-type: none; padding: 0; margin: 0;">
+        <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>This microbiome profile belongs to someone with a severe generalized infection <b>(sepsis)</b>.</li>
+        <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>One species dominates the profile, preventing other bacteria from thriving.</li>
+        <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>This abnormality results from long-term strong antibiotic use and overall poor health.</li>
+    </ul>
+</div>
+  
+  <div id="comparison">
+    <figure>
+        <div id="handle"></div>
+        <div id="divisor"></div>   
+    </figure>
+    <input type="range" min="0" max="100" value="50" id="slider" oninput="moveDivisor()">
+  </div>
+  
+ </div>
+<div style="max-width:1000px;padding:0px 40px;margin:20px auto;text-align:center">
+   <p style="font-size:17px;margin-bottom:10px"> </p>
+  <b style="font-size: 20px;">MORE Colors* = MORE Diverse & STRONG Microbiome</b></p>
+
+</div>
+
+ <div class="tab-container">
+   <div class="tab">
+    <button style="color:green" class="tablinks" onclick="openCity(event, 'Good')" id="defaultOpen">GOOD</button>
+    <button style="color:red" class="tablinks" onclick="openCity(event, 'Bad')">BAD</button>
+  </div>
+
+    <div style="padding-left: 10px;" id="Good" class="tabcontent">
+      <ul style="margin-left: 15px; list-style-type: none;">
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>This microbiome profile belongs to someone who eats a healthy, varied diet of mostly fresh, unprocessed food.</li>
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>The diverse colors indicate a balance of different bacteria, with no single type dominating.</li>
+    <li><i class="fa fa-check-circle" style="color:green; margin-right: 8px;"></i>Good bacteria thrive, keeping harmful ones in check.</li>
+  </ul>
+    </div>
+    
+    <div id="Bad" class="tabcontent">
+      <ul style="margin-left: 15px; list-style-type: none;">
+    <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>This microbiome profile belongs to someone with a severe generalized infection <b>(sepsis)</b>.</li>
+    <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>One species dominates the profile, preventing other bacteria from thriving.</li>
+    <li><i class="fa fa-times-circle" style="color:red; margin-right: 8px;"></i>This abnormality results from long-term strong antibiotic use and overall poor health.</li>
+  </ul> 
+    </div>
+ </div>
+ 
+ <style>
+
+ .comparison-container h2{
+   text-align:center;
+   margin-bottom:30px
+ }
+
+
+.comparison-container div:empty{
+  display:block
+}
+.comparison-container {
+  max-width: 500px;
+  margin:auto;
+  padding:0px 20px
+}
+
+#comparison {
+  width: 100%;
+  padding-bottom: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+figure { 
+  position: absolute;
+  background-image: url(https://cdn.shopify.com/s/files/1/0842/2227/9999/files/SunFig_tight_bad_2k.png?v=1722495879);
+  background-size: cover;
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+figure::before{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+ 
+}
+
+#divisor {
+  background-image: url(https://cdn.shopify.com/s/files/1/0842/2227/9999/files/SunFig_tight_good_2k.png?v=1722495878);
+  background-size: cover;
+  position: absolute;
+  width: 50%;
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  height: 100%;
+}
+#divisor::before, #divisor::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  
+}
+#divisor::before {
+  top: 0;
+  box-shadow: 0 -3px 8px 1px rgba(0, 0, 0, 0.3);
+}
+#divisor::after {
+  bottom: 0;
+  box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.3);
+}
+
+#handle {
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 1;
+  
+}
+#handle::before, #handle::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 6px inset transparent;
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+}
+#handle::before {
+  border-right: 6px solid white;
+  left: 50%;
+  margin-left: -25px;
+}
+#handle::after {
+  border-left: 6px solid white;
+  right: 50%;
+  margin-right: -25px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  width: calc(100% + 50px);
+  z-index: 12;
+  width:100%
+}
+input[type=range]:focus, input[type=range]:active {
+  border: none;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: transparent;
+  border: 4px solid white;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.3);
+}
+
+input[type=range]::-moz-range-track {
+  -moz-appearance: none;
+  height: 15px;
+  width: 100%;
+  background-color: transparent;
+  position: relative;
+  outline: none;
+}
+   .rightText{
+     position: absolute;
+    right: 55px;
+    z-index: 999999;
+    font-size: 20px;
+    width: 360px;
+     margin-top:40px
+   }
+   .leftText{
+     position: absolute;
+      left: 30px;
+      z-index: 999999;
+     font-size:20px;
+     width:360px;
+   margin-top:40px
+   }
+   .leftText p,.rightText p{
+     font-size:16px
+   }
+   .leftText p{
+     
+   }
+   /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #d9f7ff;
+  text-align: center;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+   .tab-container{
+     margin:30px 20px 
+   }
+   #tabcontent h3{
+     margin:10px 0px
+   }
+
+   @media screen and (min-width:1000px){
+     .tab-container{
+       display:none
+     }
+     
+   }
+   @media screen and (min-width:767px){
+     #handle{
+       border:3px solid white;
+       border-radius:50%
+     }
+   }
+   @media screen and (max-width:1000px){
+       .leftText, .rightText {
+        display: none;
+      }
+   }
+ </style>
+ <script>
+   var divisor = document.getElementById("divisor"),
+    handle = document.getElementById("handle"),
+    slider = document.getElementById("slider");
+   var goodDiv = document.getElementById("good");
+  var badDiv = document.getElementById("bad");
+
+function moveDivisor() {
+  if(slider.value < 50){
+    //document.getElementById("left").style.opacity = 0.5;
+    console.log("left")
+    badDiv.style.color="red"
+    badDiv.style.fontSize = 35 + 0.4 * (100 - slider.value) + "px";
+    
+    //goodDiv.style.fontSize = slider.value + "px";
+  }
+  else{
+   //document.getElementById("right").style.opacity = 0.5;
+    console.log("right")
+    goodDiv.style.color="Green"
+    goodDiv.style.fontSize = 35 + 0.4 * slider.value + "px";
+    //badDiv.style.fontSize = slider.value + "px";
+  }
+  
+  var value = slider.value;
+  var opacity = value / 100;
+  var complementaryOpacity = 1 - opacity;
+
+    document.getElementById("left").style.opacity = opacity;
+    document.getElementById("right").style.opacity = complementaryOpacity;
+
+    console.log("Value: " + value);
+    console.log("Left Opacity: " + opacity);
+    console.log("Right Opacity: " + complementaryOpacity);
+  
+  handle.style.left = slider.value+"%";
+  divisor.style.width = slider.value+"%";
+}
+
+window.onload = function() {
+	moveDivisor();
+};
+   function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+   document.getElementById("defaultOpen").click();
+ </script>
+
 {% schema %}
   {
-    "name": "Section name",
-    "settings": []
+    "name": "Comparison Try",
+    "settings": [],
+    "presets":[
+      {
+        "name":"Comparison Try"
+      }
+    ]
   }
 {% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
