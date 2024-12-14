@@ -289,7 +289,6 @@ var divisor = document.getElementById("divisor"),
 function moveDivisor() {
     var value = slider.value;
 
-
     handle.style.left = value + "%";
     divisor.style.width = value + "%";
 
@@ -318,32 +317,38 @@ function moveDivisor() {
     document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
 }
 
-    function startDragging(e) {
-        e.preventDefault();
-        document.addEventListener("mousemove", dragging);
-        document.addEventListener("mouseup", stopDragging);
-    }
+function startDragging(e) {
+    e.preventDefault();  // Prevent default behavior
+    document.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", stopDragging);
+}
 
-    function dragging(e) {
-        var rect = slider.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-        slider.value = value;
-        moveDivisor();
-    }
+function dragging(e) {
+    var rect = slider.getBoundingClientRect();
+    var offsetX = e.clientX - rect.left;
+    var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+    slider.value = value;
+    moveDivisor();
+}
 
-    function stopDragging() {
-        document.removeEventListener("mousemove", dragging);
-        document.removeEventListener("mouseup", stopDragging);
-    }
+function stopDragging() {
+    document.removeEventListener("mousemove", dragging);
+    document.removeEventListener("mouseup", stopDragging);
+}
 
-    window.onload = function () {
-        moveDivisor();
+window.onload = function () {
+    moveDivisor();
 
-        divisor.addEventListener("mousedown", startDragging);
+    // Add event listener for divisor to start dragging from anywhere
+    divisor.addEventListener("mousedown", startDragging);
 
-        slider.addEventListener("input", moveDivisor);
-    };
+    // Add event listener for the handle (as it was before)
+    handle.addEventListener("mousedown", startDragging);
+
+    // Optional: Add the slider range functionality (not necessary for your requested fix)
+    slider.addEventListener("input", moveDivisor);
+};
+
 
 
 
