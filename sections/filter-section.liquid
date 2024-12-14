@@ -327,6 +327,45 @@ function moveDivisor() {
     document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
 }
 
+// 
+  // Function to handle dragging the divisor
+    function startDragging(e) {
+        e.preventDefault();
+        document.addEventListener("mousemove", dragging);
+        document.addEventListener("mouseup", stopDragging);
+    }
+
+    function dragging(e) {
+        var rect = slider.getBoundingClientRect();
+        var offsetX = e.clientX - rect.left;
+        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+        slider.value = value;
+        moveDivisor();
+    }
+
+    function stopDragging() {
+        document.removeEventListener("mousemove", dragging);
+        document.removeEventListener("mouseup", stopDragging);
+    }
+
+    window.onload = function () {
+        moveDivisor();
+
+        // Add the dragging functionality to the divisor
+        divisor.addEventListener("mousedown", startDragging);
+
+        // Ensure the original slider functionality works
+        slider.addEventListener("input", moveDivisor);
+    };
+
+
+  // 
+
+
+
+
+  
+
 // Function to handle tab switching manually (clicking on tabs)
 function openCity(evt, cityName) {
     // Hide all tab content
