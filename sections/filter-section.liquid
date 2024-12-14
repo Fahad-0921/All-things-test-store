@@ -338,7 +338,73 @@ window.onload = function() {
       evt.currentTarget.className += " active";
     }
    document.getElementById("defaultOpen").click();
+
  </script>
+<script>
+const slider = document.getElementById("slider");
+const divisor = document.getElementById("divisor");
+const handle = document.getElementById("handle");
+
+let isDragging = false; // Track mouse drag
+let offsetX; // To calculate accurate position
+
+// Update divisor based on slider input
+function moveDivisor() {
+  const value = slider.value;
+  divisor.style.width = value + "%";
+  handle.style.left = value + "%";
+}
+
+// Function to move divisor and handle during mouse drag
+function updateDivisor(clientX) {
+  const container = document.getElementById("comparison");
+  const rect = container.getBoundingClientRect();
+  let percentage = ((clientX - rect.left) / rect.width) * 100;
+
+  // Constrain the divisor between 0% and 100%
+  if (percentage < 0) percentage = 0;
+  if (percentage > 100) percentage = 100;
+
+  divisor.style.width = percentage + "%";
+  handle.style.left = percentage + "%";
+  slider.value = percentage; // Sync with range slider
+}
+
+// Start dragging when clicking anywhere on divisor or handle
+divisor.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX;
+  e.preventDefault();
+});
+
+handle.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX;
+  e.preventDefault();
+});
+
+// Mouse move event to update divisor width
+document.addEventListener("mousemove", (e) => {
+  if (isDragging) {
+    updateDivisor(e.clientX);
+  }
+});
+
+// Stop dragging on mouse up
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
+
+// Sync slider movement with input range changes
+slider.addEventListener("input", moveDivisor);
+
+// Initialize position
+moveDivisor();
+</script>
+
+
+
+
 
 {% schema %}
   {
