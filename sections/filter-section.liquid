@@ -349,20 +349,28 @@ function moveDivisor() {
     slider.addEventListener("input", moveDivisor);
   };
 
-  // Tab functionality (unchanged)
-  function openCity(evt, cityName) {
+function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
+    
+    // Hide all tab contents
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
+        tabcontent[i].style.display = "none";
     }
+    
+    // Remove the "active" class from all tab links
     tablinks = document.getElementsByClassName("tablinks");
     for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
+    
+    // Show the clicked tab content
     document.getElementById(cityName).style.display = "block";
+    
+    // Add "active" class to the clicked tab button
     evt.currentTarget.className += " active";
-  }
+}
+
 
   document.getElementById("defaultOpen").click();
   
