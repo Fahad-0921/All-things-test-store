@@ -285,98 +285,82 @@ input[type=range]::-moz-range-track {
 
 <script>
   
-// Get the elements for the slider, divisor, and tab links
-var slider = document.getElementById("slider");
-var divisor = document.getElementById("divisor");
-var handle = document.getElementById("handle");
-var goodDiv = document.getElementById("Good");
-var badDiv = document.getElementById("Bad");
-var leftDiv = document.getElementById("left");
-var rightDiv = document.getElementById("right");
+  var divisor = document.getElementById("divisor"),
+    handle = document.getElementById("handle"),
+    slider = document.getElementById("slider");
+  var goodDiv = document.getElementById("good");
+  var badDiv = document.getElementById("bad");
 
-// Check if we are in mobile view
-function isMobileView() {
-  return window.innerWidth <= 768; // Assuming mobile view is <= 768px
-}
+  // Function to update the position of the divisor and handle
+  function moveDivisor() {
+    var value = slider.value;
 
-// Function to handle tab switching
-function openCity(evt, cityName) {
-  var i, tabcontent, tablinks;
-
-  // Hide all tab content
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Remove the "active" class from all tabs
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the selected tab content
-  document.getElementById(cityName).style.display = "block";
-
-  // Add the "active" class to the clicked tab
-  evt.currentTarget.className += " active";
-
-  // Update the divisor position based on the tab clicked
-  if (cityName === "Good") {
-    slider.value = 100;  // Move the divisor to the right
-  } else if (cityName === "Bad") {
-    slider.value = 0;    // Move the divisor to the left
-  }
-
-  // Ensure divisor and handle are updated correctly after tab switch
-  moveDivisor(); // Update the divisor position after switching tabs
-}
-
-// Function to move the divisor based on slider value
-function moveDivisor() {
-  var value = slider.value;
-
-  // If we are in mobile view, adjust the slider's behavior
-  if (isMobileView()) {
-    // Adjust the divisor width and handle movement for mobile view
-    divisor.style.width = value + "%";
-    handle.style.left = "calc(" + value + "% - 30px)";
-    
-    // Adjust the font size and color for mobile view (more dynamic based on slider value)
     if (value < 50) {
+      console.log("left");
       badDiv.style.color = "red";
-      badDiv.style.fontSize = "16px";
-      goodDiv.style.color = "green";
-      goodDiv.style.fontSize = "16px";
+      badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
     } else {
-      badDiv.style.color = "red";
-      badDiv.style.fontSize = "16px";
+      console.log("right");
       goodDiv.style.color = "green";
-      goodDiv.style.fontSize = "16px";
+      goodDiv.style.fontSize = 35 + 0.4 * value + "px";
     }
-  } else {
-    // For desktop view, maintain the original functionality
-    divisor.style.width = "100%"; // Always show the full width
-    handle.style.left = "calc(100% - 30px)"; // Position the handle at the far right
+
+    var opacity = value / 100;
+    var complementaryOpacity = 1 - opacity;
+
+    document.getElementById("left").style.opacity = opacity;
+    document.getElementById("right").style.opacity = complementaryOpacity;
+
+    handle.style.left = value + "%";
+    divisor.style.width = value + "%";
   }
-}
 
-// Initialize tab display on page load
-document.getElementById("defaultOpen").click();
+  // Function to handle dragging the divisor
+  function startDragging(e) {
+    e.preventDefault();
+    document.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", stopDragging);
+  }
 
-// Function to handle slider input change
-slider.addEventListener('input', function () {
-  moveDivisor();
-});
+  function dragging(e) {
+    var rect = slider.getBoundingClientRect();
+    var offsetX = e.clientX - rect.left;
+    var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+    slider.value = value;
+    moveDivisor();
+  }
 
-// Listen for window resize to handle changes between mobile and desktop view
-window.addEventListener('resize', function() {
-  moveDivisor(); // Recalculate divisor positioning on window resize
-});
+  function stopDragging() {
+    document.removeEventListener("mousemove", dragging);
+    document.removeEventListener("mouseup", stopDragging);
+  }
 
+  window.onload = function () {
+    moveDivisor();
 
+    // Add the dragging functionality to the divisor
+    divisor.addEventListener("mousedown", startDragging);
 
+    // Ensure the original slider functionality works
+    slider.addEventListener("input", moveDivisor);
+  };
 
+  // Tab functionality (unchanged)
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  document.getElementById("defaultOpen").click();
   
 </script>
 
