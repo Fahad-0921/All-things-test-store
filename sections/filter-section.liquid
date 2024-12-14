@@ -290,7 +290,10 @@ input[type=range]::-moz-range-track {
   var goodDiv = document.getElementById("good");
   var badDiv = document.getElementById("bad");
 
-  function moveDivisor(value) {
+  // Function to update the position of the divisor and handle
+  function moveDivisor() {
+    var value = slider.value;
+
     if (value < 50) {
       console.log("left");
       badDiv.style.color = "red";
@@ -311,6 +314,7 @@ input[type=range]::-moz-range-track {
     divisor.style.width = value + "%";
   }
 
+  // Function to handle dragging the divisor
   function startDragging(e) {
     e.preventDefault();
     document.addEventListener("mousemove", dragging);
@@ -322,7 +326,7 @@ input[type=range]::-moz-range-track {
     var offsetX = e.clientX - rect.left;
     var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
     slider.value = value;
-    moveDivisor(value);
+    moveDivisor();
   }
 
   function stopDragging() {
@@ -331,13 +335,16 @@ input[type=range]::-moz-range-track {
   }
 
   window.onload = function () {
-    moveDivisor(slider.value);
+    moveDivisor();
 
-    // Add event listeners to both handle and divisor
-    handle.addEventListener("mousedown", startDragging);
+    // Add the dragging functionality to the divisor
     divisor.addEventListener("mousedown", startDragging);
+
+    // Ensure the original slider functionality works
+    slider.addEventListener("input", moveDivisor);
   };
 
+  // Tab functionality (unchanged)
   function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
