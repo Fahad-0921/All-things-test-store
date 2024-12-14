@@ -290,23 +290,41 @@ input[type=range]::-moz-range-track {
         handle = document.getElementById("handle"),
         slider = document.getElementById("slider");
 
-function moveDivisor() {
-    var value = slider.value;
+    function moveDivisor() {
+        var value = slider.value;
 
-    // Update divisor and handle position
-    divisor.style.width = `${value}%`;
-    handle.style.left = `${value}%`;
+        // Update divisor and handle position
+        handle.style.left = value + "%";
+        divisor.style.width = value + "%";
 
-    // Set opacity for text elements
-    const opacity = value / 100;
-    document.getElementById("left").style.opacity = opacity;
-    document.getElementById("right").style.opacity = 1 - opacity;
+        // Update opacity for text
+        var opacity = value / 100;
+        var complementaryOpacity = 1 - opacity;
+        document.getElementById("left").style.opacity = opacity;
+        document.getElementById("right").style.opacity = complementaryOpacity;
 
-    // Update active tabs dynamically
-    document.getElementById("Good").style.display = value >= 50 ? "block" : "none";
-    document.getElementById("Bad").style.display = value < 50 ? "block" : "none";
-}
+        // Determine active tab based on slider value
+        var activeTab, inactiveTab;
 
+        if (value < 50) {
+            activeTab = "Bad";
+            inactiveTab = "Good";
+        } else {
+            activeTab = "Good";
+            inactiveTab = "Bad";
+        }
+
+        // Highlight the active tab
+        document.getElementById(activeTab).style.display = "block";
+        document.getElementById(inactiveTab).style.display = "none";
+
+        // Update tab buttons
+        var tablinks = document.getElementsByClassName("tablinks");
+        for (var i = 0; i < tablinks.length; i++) {
+            tablinks[i].classList.remove("active");
+        }
+        document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
+    }
 
     // Function to handle dragging the divisor
     function startDragging(e) {
@@ -315,14 +333,13 @@ function moveDivisor() {
         document.addEventListener("mouseup", stopDragging);
     }
 
-function dragging(e) {
-    const rect = slider.getBoundingClientRect();
-    const offsetX = e.clientX - rect.left;
-    const newValue = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-    slider.value = newValue;
-    moveDivisor();
-}
-
+    function dragging(e) {
+        var rect = slider.getBoundingClientRect();
+        var offsetX = e.clientX - rect.left;
+        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+        slider.value = value;
+        moveDivisor();
+    }
 
     function stopDragging() {
         document.removeEventListener("mousemove", dragging);
