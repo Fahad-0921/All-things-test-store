@@ -318,7 +318,7 @@ function moveDivisor() {
 }
 
 function startDragging(e) {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default action for both touch and mouse events
     document.addEventListener("mousemove", dragging);
     document.addEventListener("mouseup", stopDragging);
 
@@ -359,6 +359,7 @@ window.onload = function () {
     divisor.addEventListener("mousedown", startDragging);
     divisor.addEventListener("touchstart", startDragging, { passive: false });
 };
+
 
 
 
