@@ -286,11 +286,11 @@ input[type=range]::-moz-range-track {
 <script>
   
 // Get the elements for the slider, divisor, and tab links
-var slider = document.getElementById("myRange");
+var slider = document.getElementById("slider"); // Fixed slider ID
 var divisor = document.getElementById("divisor");
 var handle = document.getElementById("handle");
-var goodDiv = document.getElementById("GoodDiv");
-var badDiv = document.getElementById("BadDiv");
+var goodDiv = document.getElementById("Good");
+var badDiv = document.getElementById("Bad");
 var leftDiv = document.getElementById("left");
 var rightDiv = document.getElementById("right");
 
@@ -334,38 +334,31 @@ function moveDivisor() {
   // Adjust font size and color based on the slider's value
   if (value < 50) {
     badDiv.style.color = "red";
-    badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
-    goodDiv.style.color = "green"; // Ensure goodDiv is reset to green
-    goodDiv.style.fontSize = "35px"; // Reset font size
-  } else {
+    badDiv.style.fontSize = "16px";
     goodDiv.style.color = "green";
-    goodDiv.style.fontSize = 35 + 0.4 * value + "px";
-    badDiv.style.color = "red"; // Ensure badDiv is reset to red
-    badDiv.style.fontSize = "35px"; // Reset font size
+    goodDiv.style.fontSize = "16px";
+  } else {
+    badDiv.style.color = "red";
+    badDiv.style.fontSize = "16px";
+    goodDiv.style.color = "green";
+    goodDiv.style.fontSize = "16px";
   }
 
-  // Set the opacity of the left and right divs based on slider value
-  var opacity = value / 100;
-  var complementaryOpacity = 1 - opacity;
-
-  leftDiv.style.opacity = opacity;
-  rightDiv.style.opacity = complementaryOpacity;
-
-  // Adjust the divisor's width and handle's position based on slider value
-  handle.style.left = value + "%";
+  // Adjust the divisor width
   divisor.style.width = value + "%";
+
+  // Move the handle based on slider value
+  handle.style.left = "calc(" + value + "% - 30px)";  // Adjust for center alignment of the handle
 }
 
-// Set initial tab and divisor position when the page loads
+// Initialize tab display on page load
 document.getElementById("defaultOpen").click();
 
-// Listen for changes in the slider and move the divisor accordingly
-slider.addEventListener('input', moveDivisor);
-
-// Ensure the divisor is correctly set when the page is loaded or refreshed
-window.onload = function() {
+// Function to handle slider input change
+slider.addEventListener('input', function () {
   moveDivisor();
-};
+});
+
 
 
   
