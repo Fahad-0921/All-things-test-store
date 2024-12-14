@@ -318,11 +318,10 @@ function moveDivisor() {
 }
 
 function startDragging(e) {
-    e.preventDefault(); // Prevent default action for both touch and mouse events
+    e.preventDefault(); 
     document.addEventListener("mousemove", dragging);
     document.addEventListener("mouseup", stopDragging);
 
-    // For touch devices, prevent default touch behavior
     document.addEventListener("touchmove", dragging, { passive: false });
     document.addEventListener("touchend", stopDragging);
 }
@@ -331,7 +330,6 @@ function dragging(e) {
     var rect = slider.getBoundingClientRect();
     var offsetX;
 
-    // Check for touch events
     if (e.type.includes("touch")) {
         offsetX = e.touches[0].clientX - rect.left; // For touch devices
     } else {
@@ -347,7 +345,6 @@ function stopDragging() {
     document.removeEventListener("mousemove", dragging);
     document.removeEventListener("mouseup", stopDragging);
 
-    // Remove touch event listeners
     document.removeEventListener("touchmove", dragging);
     document.removeEventListener("touchend", stopDragging);
 }
@@ -355,7 +352,6 @@ function stopDragging() {
 window.onload = function () {
     moveDivisor();
 
-    // Add mouse and touch event listeners to the divisor
     divisor.addEventListener("mousedown", startDragging);
     divisor.addEventListener("touchstart", startDragging, { passive: false });
 };
