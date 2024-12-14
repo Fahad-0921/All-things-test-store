@@ -361,10 +361,6 @@ window.onload = function () {
 };
 
 
-
-
-
-
 function openCity(evt, cityName) {
     var tabcontent = document.getElementsByClassName("tabcontent");
     for (var i = 0; i < tabcontent.length; i++) {
@@ -379,9 +375,9 @@ function openCity(evt, cityName) {
     evt.currentTarget.classList.add("active");
 
     if (cityName === "Good") {
-        slider.value = 75;  
+        slider.value = 100;  
     } else if (cityName === "Bad") {
-        slider.value = 25;
+        slider.value = 0;
     }
     moveDivisor();
 }
