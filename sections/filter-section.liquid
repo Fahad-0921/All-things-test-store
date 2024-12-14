@@ -307,18 +307,14 @@ input[type=range]::-moz-range-track {
     document.getElementById("left").style.opacity = opacity;
     document.getElementById("right").style.opacity = complementaryOpacity;
 
-    console.log("Value: " + value);
-    console.log("Left Opacity: " + opacity);
-    console.log("Right Opacity: " + complementaryOpacity);
-
     handle.style.left = value + "%";
     divisor.style.width = value + "%";
   }
 
-  function startDrag(e) {
+  function startDragging(e) {
     e.preventDefault();
     document.addEventListener("mousemove", dragging);
-    document.addEventListener("mouseup", stopDrag);
+    document.addEventListener("mouseup", stopDragging);
   }
 
   function dragging(e) {
@@ -329,15 +325,17 @@ input[type=range]::-moz-range-track {
     moveDivisor(value);
   }
 
-  function stopDrag() {
+  function stopDragging() {
     document.removeEventListener("mousemove", dragging);
-    document.removeEventListener("mouseup", stopDrag);
+    document.removeEventListener("mouseup", stopDragging);
   }
 
   window.onload = function () {
     moveDivisor(slider.value);
-    handle.addEventListener("mousedown", startDrag);
-    divisor.addEventListener("mousedown", startDrag);
+
+    // Add event listeners to both handle and divisor
+    handle.addEventListener("mousedown", startDragging);
+    divisor.addEventListener("mousedown", startDragging);
   };
 
   function openCity(evt, cityName) {
@@ -356,6 +354,7 @@ input[type=range]::-moz-range-track {
 
   document.getElementById("defaultOpen").click();
 </script>
+
 
 
 
