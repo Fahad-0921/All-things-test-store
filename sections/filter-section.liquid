@@ -318,14 +318,26 @@ function moveDivisor() {
 }
 
 function startDragging(e) {
-    e.preventDefault();  // Prevent default behavior
+    e.preventDefault();
     document.addEventListener("mousemove", dragging);
     document.addEventListener("mouseup", stopDragging);
+
+    // For touch devices, prevent default touch behavior
+    document.addEventListener("touchmove", dragging, { passive: false });
+    document.addEventListener("touchend", stopDragging);
 }
 
 function dragging(e) {
     var rect = slider.getBoundingClientRect();
-    var offsetX = e.clientX - rect.left;
+    var offsetX;
+
+    // Check for touch events
+    if (e.type.includes("touch")) {
+        offsetX = e.touches[0].clientX - rect.left; // For touch devices
+    } else {
+        offsetX = e.clientX - rect.left; // For desktop devices
+    }
+
     var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
     slider.value = value;
     moveDivisor();
@@ -334,20 +346,20 @@ function dragging(e) {
 function stopDragging() {
     document.removeEventListener("mousemove", dragging);
     document.removeEventListener("mouseup", stopDragging);
+
+    // Remove touch event listeners
+    document.removeEventListener("touchmove", dragging);
+    document.removeEventListener("touchend", stopDragging);
 }
 
 window.onload = function () {
     moveDivisor();
 
-    // Add event listener for divisor to start dragging from anywhere
+    // Add mouse and touch event listeners to the divisor
     divisor.addEventListener("mousedown", startDragging);
-
-    // Add event listener for the handle (as it was before)
-    handle.addEventListener("mousedown", startDragging);
-
-    // Optional: Add the slider range functionality (not necessary for your requested fix)
-    slider.addEventListener("input", moveDivisor);
+    divisor.addEventListener("touchstart", startDragging, { passive: false });
 };
+
 
 
 
