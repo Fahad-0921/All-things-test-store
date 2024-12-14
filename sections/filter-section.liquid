@@ -286,13 +286,18 @@ input[type=range]::-moz-range-track {
 <script>
   
 // Get the elements for the slider, divisor, and tab links
-var slider = document.getElementById("slider"); // Fixed slider ID
+var slider = document.getElementById("slider");
 var divisor = document.getElementById("divisor");
 var handle = document.getElementById("handle");
 var goodDiv = document.getElementById("Good");
 var badDiv = document.getElementById("Bad");
 var leftDiv = document.getElementById("left");
 var rightDiv = document.getElementById("right");
+
+// Check if we are in mobile view
+function isMobileView() {
+  return window.innerWidth <= 768; // Assuming mobile view is <= 768px
+}
 
 // Function to handle tab switching
 function openCity(evt, cityName) {
@@ -331,24 +336,29 @@ function openCity(evt, cityName) {
 function moveDivisor() {
   var value = slider.value;
 
-  // Adjust font size and color based on the slider's value
-  if (value < 50) {
-    badDiv.style.color = "red";
-    badDiv.style.fontSize = "16px";
-    goodDiv.style.color = "green";
-    goodDiv.style.fontSize = "16px";
+  // If we are in mobile view, adjust the slider's behavior
+  if (isMobileView()) {
+    // Adjust the divisor width and handle movement for mobile view
+    divisor.style.width = value + "%";
+    handle.style.left = "calc(" + value + "% - 30px)";
+    
+    // Adjust the font size and color for mobile view (more dynamic based on slider value)
+    if (value < 50) {
+      badDiv.style.color = "red";
+      badDiv.style.fontSize = "16px";
+      goodDiv.style.color = "green";
+      goodDiv.style.fontSize = "16px";
+    } else {
+      badDiv.style.color = "red";
+      badDiv.style.fontSize = "16px";
+      goodDiv.style.color = "green";
+      goodDiv.style.fontSize = "16px";
+    }
   } else {
-    badDiv.style.color = "red";
-    badDiv.style.fontSize = "16px";
-    goodDiv.style.color = "green";
-    goodDiv.style.fontSize = "16px";
+    // For desktop view, maintain the original functionality
+    divisor.style.width = "100%"; // Always show the full width
+    handle.style.left = "calc(100% - 30px)"; // Position the handle at the far right
   }
-
-  // Adjust the divisor width
-  divisor.style.width = value + "%";
-
-  // Move the handle based on slider value
-  handle.style.left = "calc(" + value + "% - 30px)";  // Adjust for center alignment of the handle
 }
 
 // Initialize tab display on page load
@@ -358,6 +368,12 @@ document.getElementById("defaultOpen").click();
 slider.addEventListener('input', function () {
   moveDivisor();
 });
+
+// Listen for window resize to handle changes between mobile and desktop view
+window.addEventListener('resize', function() {
+  moveDivisor(); // Recalculate divisor positioning on window resize
+});
+
 
 
 
