@@ -515,6 +515,10 @@
     "filter_section_cK8CtF": {
       "type": "filter-section",
       "settings": {}
+    },
+    "option_tabs_abbeds_VYiD8r": {
+      "type": "option-tabs-ABBEDS",
+      "settings": {}
     }
   },
   "order": [
@@ -528,6 +532,7 @@
     "my_sldier_mxzP77",
     "collection_slider_zFJnnQ",
     "double_image_text_cwVwP3",
-    "filter_section_cK8CtF"
+    "filter_section_cK8CtF",
+    "option_tabs_abbeds_VYiD8r"
   ]
 }
