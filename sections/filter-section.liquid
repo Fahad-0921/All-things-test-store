@@ -284,82 +284,72 @@ input[type=range]::-moz-range-track {
  </style>
 
 <script>
-  var divisor = document.getElementById("divisor"),
-    handle = document.getElementById("handle"),
-    slider = document.getElementById("slider");
-  var goodDiv = document.getElementById("good");
-  var badDiv = document.getElementById("bad");
+  
+// Get the elements for the slider, divisor, and tab links
+var slider = document.getElementById("myRange");
+var divisor = document.getElementById("divisor");
+var handle = document.getElementById("handle");
+var goodDiv = document.getElementById("GoodDiv");
+var badDiv = document.getElementById("BadDiv");
 
-  // Function to update the position of the divisor and handle
-  function moveDivisor() {
-    var value = slider.value;
+// Function to handle tab switching
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
 
-    if (value < 50) {
-      console.log("left");
-      badDiv.style.color = "red";
-      badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
-    } else {
-      console.log("right");
-      goodDiv.style.color = "green";
-      goodDiv.style.fontSize = 35 + 0.4 * value + "px";
-    }
-
-    var opacity = value / 100;
-    var complementaryOpacity = 1 - opacity;
-
-    document.getElementById("left").style.opacity = opacity;
-    document.getElementById("right").style.opacity = complementaryOpacity;
-
-    handle.style.left = value + "%";
-    divisor.style.width = value + "%";
+  // Hide all tab content
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
 
-  // Function to handle dragging the divisor
-  function startDragging(e) {
-    e.preventDefault();
-    document.addEventListener("mousemove", dragging);
-    document.addEventListener("mouseup", stopDragging);
+  // Remove the "active" class from all tabs
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
 
-  function dragging(e) {
-    var rect = slider.getBoundingClientRect();
-    var offsetX = e.clientX - rect.left;
-    var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-    slider.value = value;
-    moveDivisor();
+  // Show the selected tab content
+  document.getElementById(cityName).style.display = "block";
+
+  // Add the "active" class to the clicked tab
+  evt.currentTarget.className += " active";
+
+  // Update the divisor position based on the tab clicked
+  if (cityName === "Good") {
+    slider.value = 100;  // Move the divisor to the right
+  } else if (cityName === "Bad") {
+    slider.value = 0;    // Move the divisor to the left
   }
 
-  function stopDragging() {
-    document.removeEventListener("mousemove", dragging);
-    document.removeEventListener("mouseup", stopDragging);
+  moveDivisor(); // Update the divisor position after switching tabs
+}
+
+// Function to move the divisor based on slider value
+function moveDivisor() {
+  var value = slider.value;
+
+  if (value < 50) {
+    badDiv.style.color = "red";
+    badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
+  } else {
+    goodDiv.style.color = "green";
+    goodDiv.style.fontSize = 35 + 0.4 * value + "px";
   }
 
-  window.onload = function () {
-    moveDivisor();
+  var opacity = value / 100;
+  var complementaryOpacity = 1 - opacity;
 
-    // Add the dragging functionality to the divisor
-    divisor.addEventListener("mousedown", startDragging);
+  document.getElementById("left").style.opacity = opacity;
+  document.getElementById("right").style.opacity = complementaryOpacity;
 
-    // Ensure the original slider functionality works
-    slider.addEventListener("input", moveDivisor);
-  };
+  handle.style.left = value + "%";
+  divisor.style.width = value + "%";
+}
 
-  // Tab functionality (unchanged)
-  function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
+// Trigger initial tab and divisor setup
+document.getElementById("defaultOpen").click();
 
-  document.getElementById("defaultOpen").click();
+  
 </script>
 
 
