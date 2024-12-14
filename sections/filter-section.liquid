@@ -284,6 +284,7 @@ input[type=range]::-moz-range-track {
       }
    }
  </style>
+
 <script>
 
 var divisor = document.getElementById("divisor"),
@@ -370,58 +371,7 @@ document.querySelectorAll('.tablinks').forEach(tab => {
     });
 });
 
-// Mouse drag functionality for divisor
-var isDragging = false;
-
-handle.addEventListener('mousedown', function (e) {
-    isDragging = true;
-    var startX = e.clientX;
-    var startWidth = divisor.offsetWidth;
-
-    function onMouseMove(e) {
-        if (!isDragging) return;
-        var diff = e.clientX - startX;
-        var newWidth = Math.min(100, Math.max(0, (startWidth + diff) / slider.offsetWidth * 100));
-        slider.value = newWidth;
-        moveDivisor();
-    }
-
-    function onMouseUp() {
-        isDragging = false;
-        document.removeEventListener('mousemove', onMouseMove);
-        document.removeEventListener('mouseup', onMouseUp);
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
-});
-
-// Optional: Also handle touch events for mobile devices
-handle.addEventListener('touchstart', function (e) {
-    isDragging = true;
-    var startX = e.touches[0].clientX;
-    var startWidth = divisor.offsetWidth;
-
-    function onTouchMove(e) {
-        if (!isDragging) return;
-        var diff = e.touches[0].clientX - startX;
-        var newWidth = Math.min(100, Math.max(0, (startWidth + diff) / slider.offsetWidth * 100));
-        slider.value = newWidth;
-        moveDivisor();
-    }
-
-    function onTouchEnd() {
-        isDragging = false;
-        document.removeEventListener('touchmove', onTouchMove);
-        document.removeEventListener('touchend', onTouchEnd);
-    }
-
-    document.addEventListener('touchmove', onTouchMove);
-    document.addEventListener('touchend', onTouchEnd);
-});
-
 </script>
-
 
 
 
