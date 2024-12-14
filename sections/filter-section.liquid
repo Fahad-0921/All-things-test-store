@@ -221,6 +221,7 @@ input[type=range]::-moz-range-track {
    .leftText p{
      
    }
+   /* Style the tab */
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
@@ -228,6 +229,7 @@ input[type=range]::-moz-range-track {
   text-align: center;
 }
 
+/* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
   border: none;
@@ -238,16 +240,17 @@ input[type=range]::-moz-range-track {
   font-size: 17px;
 }
 
+/* Change background color of buttons on hover */
 .tab button:hover {
   background-color: #ddd;
 }
 
+/* Create an active/current tablink class */
 .tab button.active {
-  background-color: white; 
-  color: black; 
-  font-weight: bold;
+  background-color: white;
 }
 
+/* Style the tab content */
 .tabcontent {
   display: none;
   padding: 6px 12px;
@@ -279,108 +282,63 @@ input[type=range]::-moz-range-track {
       }
    }
  </style>
-
-<script>
-
-var divisor = document.getElementById("divisor"),
+ <script>
+   var divisor = document.getElementById("divisor"),
     handle = document.getElementById("handle"),
     slider = document.getElementById("slider");
+   var goodDiv = document.getElementById("good");
+  var badDiv = document.getElementById("bad");
 
 function moveDivisor() {
-    var value = slider.value;
+  if(slider.value < 50){
+    //document.getElementById("left").style.opacity = 0.5;
+    console.log("left")
+    badDiv.style.color="red"
+    badDiv.style.fontSize = 35 + 0.4 * (100 - slider.value) + "px";
+    
+    //goodDiv.style.fontSize = slider.value + "px";
+  }
+  else{
+   //document.getElementById("right").style.opacity = 0.5;
+    console.log("right")
+    goodDiv.style.color="Green"
+    goodDiv.style.fontSize = 35 + 0.4 * slider.value + "px";
+    //badDiv.style.fontSize = slider.value + "px";
+  }
+  
+  var value = slider.value;
+  var opacity = value / 100;
+  var complementaryOpacity = 1 - opacity;
 
-
-    handle.style.left = value + "%";
-    divisor.style.width = value + "%";
-
-    var opacity = value / 100;
-    var complementaryOpacity = 1 - opacity;
     document.getElementById("left").style.opacity = opacity;
     document.getElementById("right").style.opacity = complementaryOpacity;
 
-    var activeTab, inactiveTab;
-
-    if (value < 50) {
-        activeTab = "Bad";
-        inactiveTab = "Good";
-    } else {
-        activeTab = "Good";
-        inactiveTab = "Bad";
-    }
-
-    document.getElementById(activeTab).style.display = "block";
-    document.getElementById(inactiveTab).style.display = "none";
-
-    var tablinks = document.getElementsByClassName("tablinks");
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-    document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
+    console.log("Value: " + value);
+    console.log("Left Opacity: " + opacity);
+    console.log("Right Opacity: " + complementaryOpacity);
+  
+  handle.style.left = slider.value+"%";
+  divisor.style.width = slider.value+"%";
 }
 
-    function startDragging(e) {
-        e.preventDefault();
-        document.addEventListener("mousemove", dragging);
-        document.addEventListener("mouseup", stopDragging);
-    }
-
-    function dragging(e) {
-        var rect = slider.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-        slider.value = value;
-        moveDivisor();
-    }
-
-    function stopDragging() {
-        document.removeEventListener("mousemove", dragging);
-        document.removeEventListener("mouseup", stopDragging);
-    }
-
-    window.onload = function () {
-        moveDivisor();
-
-        divisor.addEventListener("mousedown", startDragging);
-
-        slider.addEventListener("input", moveDivisor);
-    };
-
-
-
-function openCity(evt, cityName) {
-    var tabcontent = document.getElementsByClassName("tabcontent");
-    for (var i = 0; i < tabcontent.length; i++) {
+window.onload = function() {
+	moveDivisor();
+};
+   function openCity(evt, cityName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
     }
-
-    var tablinks = document.getElementsByClassName("tablinks");
-    for (var i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.classList.add("active");
-
-    if (cityName === "Good") {
-        slider.value = 75;  
-    } else if (cityName === "Bad") {
-        slider.value = 25;
-    }
-    moveDivisor();
-}
-document.getElementById("defaultOpen").click();
-document.querySelectorAll('.tablinks').forEach(tab => {
-    tab.addEventListener('click', function() {
-        var activeTab = document.querySelector('.tablinks.active');
-        if (activeTab) {
-            var tabName = activeTab.innerText.trim().toLowerCase();
-            var tabValue = tabName === 'good' ? 75 : 25;
-            slider.value = tabValue;
-            moveDivisor();
-        }
-    });
-});
-
-</script>
+   document.getElementById("defaultOpen").click();
+ </script>
 
 {% schema %}
   {
