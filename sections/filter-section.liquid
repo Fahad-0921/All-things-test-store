@@ -317,6 +317,9 @@ function moveDivisor() {
     document.querySelector(`[onclick*="${activeTab}"]`).classList.add("active");
 }
 
+  
+  //  ======= Added a touch or mouse event for dragging the divisor from grabbing anywhere ========
+
 function startDragging(e) {
     e.preventDefault(); 
     document.addEventListener("mousemove", dragging);
@@ -331,9 +334,9 @@ function dragging(e) {
     var offsetX;
 
     if (e.type.includes("touch")) {
-        offsetX = e.touches[0].clientX - rect.left; // For touch devices
+        offsetX = e.touches[0].clientX - rect.left;
     } else {
-        offsetX = e.clientX - rect.left; // For desktop devices
+        offsetX = e.clientX - rect.left; 
     }
 
     var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
@@ -356,7 +359,8 @@ window.onload = function () {
     divisor.addEventListener("touchstart", startDragging, { passive: false });
 };
 
-
+// ====== setup the tabs active and inactive functionality along with divisor value =======
+  
 function openCity(evt, cityName) {
     var tabcontent = document.getElementsByClassName("tabcontent");
     for (var i = 0; i < tabcontent.length; i++) {
