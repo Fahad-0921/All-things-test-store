@@ -315,13 +315,14 @@ function moveDivisor() {
         document.addEventListener("mouseup", stopDragging);
     }
 
-    function dragging(e) {
-        var rect = slider.getBoundingClientRect();
-        var offsetX = e.clientX - rect.left;
-        var value = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-        slider.value = value;
-        moveDivisor();
-    }
+function dragging(e) {
+    const rect = slider.getBoundingClientRect();
+    const offsetX = e.clientX - rect.left;
+    const newValue = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+    slider.value = newValue;
+    moveDivisor();
+}
+
 
     function stopDragging() {
         document.removeEventListener("mousemove", dragging);
