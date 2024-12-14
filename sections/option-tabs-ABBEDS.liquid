@@ -1,6 +1,258 @@
+<div id="customization-options">
+  <!-- Question 1 -->
+  <div class="question" id="question-1">
+    <p>Add Gas Lift-Up Ottoman Storage to Your Bed?</p>
+    <button data-option="Add Gas Lift-Up Ottoman Storage to Your Bed?" data-value="Yes, add storage base (+ £50.00 GBP)">Yes Please, I want a storage base (+ £50.00 GBP)</button>
+    <button data-option="Add Gas Lift-Up Ottoman Storage to Your Bed?" data-value="No, I want a normal bed">No thanks, I want a normal bed</button>
+  </div>
+
+  <!-- Normal Bed Options with Images -->
+  <div class="options hidden" id="normal-bed-options">
+    <p>Normal bed base type</p>
+    <div class="image-option" data-option="base" data-value="Slatted Base (Free)">
+      <img src="https://cdn.shopify.com/s/files/1/0896/4354/8956/files/a_qBTH_ezgif.com-webp-to-png-converter_20_281_29_400x_844bb8cd-0519-4008-962a-16b6f96ea1e2.webp?v=1734032651" alt="Slatted Base" class="option-image" />
+       (Free)
+    </div>
+      <div class="image-option" data-option="base" data-value="Recommended Base (+ £29.00 GBP)">
+      <img src="https://cdn.shopify.com/s/files/1/0896/4354/8956/files/a_qBTH_ezgif.com-webp-to-png-converter_20_281_29_400x_844bb8cd-0519-4008-962a-16b6f96ea1e2.webp?v=1734032651" alt="Recommended Base" class="option-image" />
+       (+ £29.00 GBP)
+    </div>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question" id="question-2">
+    <p>Add a matching footstool or blanket box?</p>
+    <button data-option="Add a matching footstool or blanket box?" data-value="Yes, show options">Yes Please, show me the options</button>
+    <button data-option="Add a matching footstool or blanket box?" data-value="No thanks">No thanks</button>
+  </div>
+
+  <!-- Footstool Options -->
+  <div class="options hidden" id="footstool-options">
+    <p>Choose an option</p>
+   <div class="image-option" data-option="footstool-option" data-value="3ft Blanket Box ( £99.00 ) ( + £99.00 GBP )">
+      <img src="https://cdn.shopify.com/s/files/1/0896/4354/8956/files/3ft.webp?v=1734188623" alt="3ft Blanket Box ( £99.00 ) ( + £99.00 GBP )" class="option-image" />
+    </div>
+   <div class="image-option" data-option="footstool-option" data-value="Full-Size Footstool ( £175.00 ) ( + £175.00 GBP )">
+      <img src="https://cdn.shopify.com/s/files/1/0896/4354/8956/files/full_size.webp?v=1734188624" alt="Full-Size Footstool ( £175.00 ) ( + £175.00 GBP )" class="option-image" />
+    </div>
+   <div class="image-option" data-option="footstool-option" data-value="Full-Size Blanket Box ( £199.00 ) ( + £199.00 GBP )">
+      <img src="https://cdn.shopify.com/s/files/1/0896/4354/8956/files/blanket_box.webp?v=1734188623" alt="Full-Size Blanket Box ( £199.00 ) ( + £199.00 GBP )" class="option-image" />
+    </div>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question" id="question-3">
+    <p>Would you like to customize the headboard height?</p>
+    <button data-option="Would you like to customize the headboard height?" data-value="No thanks">No Thanks (I want normal dimensions)</button>
+    <button data-option="Would you like to customize the headboard height?" data-value="Yes, increase headboard height">Yes, increase headboard height</button>
+    <button data-option="Would you like to customize the headboard height?" data-value="Yes, decrease headboard height">Yes, decrease headboard height</button>
+    <!-- Text field for 'decrease headboard height' option -->
+    <input type="text" id="headboard-decrease-text" placeholder="Enter custom height" class="hidden" />
+  </div>
+
+  <!-- Headboard Options -->
+  <div class="options hidden" id="headboard-options">
+    <p>Choose headboard height</p>
+    <label><input type="radio" name="headboard-height" value="140cm (+ £49.00 GBP)"> 140cm High (+ £49.00 GBP)</label>
+    <label><input type="radio" name="headboard-height" value="150cm (+ £99.00 GBP)"> 150cm High (+ £99.00 GBP)</label>
+    <label><input type="radio" name="headboard-height" value="160cm (+ £139.00 GBP)"> 160cm High (+ £139.00 GBP)</label>
+    <label><input type="radio" name="headboard-height" value="170cm (+ £169.00 GBP)"> 170cm High (+ £169.00 GBP)</label>
+  </div>
+</div>
+
+
+<div id="price-summary" style="margin-top: 20px;">
+  <p>Options Price: <span id="options-price">£0.00</span></p>
+  <p>Product Price: <span id="product-price">{{ product.variants.first.price | money }}</span></p> 
+  <p>Total: <span id="total-price">{{ product.variants.first.price | money }}</span></p>
+</div>
+
+
+
+<style>
+.hidden {
+  display: none;
+}
+
+.question,
+.options {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+button.selected {
+  border: 2px solid red;
+  background-color: #f1f1f1;
+}
+
+.option-image {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.option-image.selected {
+  border-color: red;
+}
+
+#headboard-decrease-text {
+  margin-top: 10px;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const options = {}; // To store selected options
+  const atcButton = document.querySelector("button[name='add']"); // Shopify ATC button
+
+  // Price elements from the HTML
+  const optionsPriceEl = document.getElementById("options-price");
+  const productPriceEl = document.getElementById("product-price");
+  const totalPriceEl = document.getElementById("total-price");
+
+  // Base product price (retrieved from the product price element)
+  const productPrice = parseFloat(
+    productPriceEl.textContent.replace(/[^0-9.]/g, "")
+  );
+
+  // Helper function to parse prices from strings
+  const parsePrice = (priceString) => {
+    const match = priceString.match(/\+ £([\d.]+)/);
+    return match ? parseFloat(match[1]) : 0;
+  };
+
+  // Function to update the total price dynamically
+  const updatePrices = () => {
+    let optionsTotal = 0;
+    Object.values(options).forEach((value) => {
+      optionsTotal += parsePrice(value);
+    });
+
+    const totalPrice = productPrice + optionsTotal;
+
+    optionsPriceEl.textContent = `£${optionsTotal.toFixed(2)}`;
+    totalPriceEl.textContent = `£${totalPrice.toFixed(2)}`;
+  };
+
+  // Handle option selection (buttons and image options)
+  document.querySelectorAll("button[data-option], .image-option").forEach((button) => {
+    button.addEventListener("click", () => {
+      const option = button.dataset.option;
+      const value = button.dataset.value;
+      const parent = button.closest(".question") || button.closest(".options");
+
+      // Check if the option is already selected
+      if (options[option] && options[option] !== value) {
+        // If the option is different, remove the previous selection and subtract its price
+        options[option] = value;
+      } else if (!options[option]) {
+        // If the option is not selected yet, store the new value
+        options[option] = value;
+      } else {
+        // Deselect the current option (e.g., if switching to "No thanks")
+        delete options[option];
+      }
+
+      // Remove previous selections
+      parent.querySelectorAll("button[data-option], .image-option").forEach((btn) => btn.classList.remove("selected"));
+      button.classList.add("selected");
+
+      // Show or hide specific fields dynamically
+      if (value === "Yes, decrease headboard height") {
+        document.getElementById("headboard-decrease-text").classList.remove("hidden");
+      } else if (option === "Would you like to customize the headboard height?") {
+        document.getElementById("headboard-decrease-text").classList.add("hidden");
+      }
+
+      // Update the visibility of other options
+      if (option === "Add Gas Lift-Up Ottoman Storage to Your Bed?") {
+        document.getElementById("normal-bed-options").classList.toggle("hidden", !value.includes("normal bed"));
+      }
+      if (option === "Add a matching footstool or blanket box?") {
+        document.getElementById("footstool-options").classList.toggle("hidden", !value.includes("show options"));
+      }
+      if (option === "Would you like to customize the headboard height?") {
+        document.getElementById("headboard-options").classList.toggle("hidden", !value.includes("Yes"));
+      }
+
+      updatePrices();
+    });
+  });
+
+  // Capture headboard height selection dynamically
+  document.querySelectorAll("input[name='headboard-height']").forEach((radio) => {
+    radio.addEventListener("change", (event) => {
+      const selectedHeight = event.target.value;
+      options["Selected Headboard Height"] = selectedHeight;
+      updatePrices();
+    });
+  });
+
+  // Handle ATC button click
+  if (atcButton) {
+    atcButton.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      // Find the product form
+      const productForm = atcButton.closest("form");
+      if (!productForm) {
+        console.error("Product form not found!");
+        return;
+      }
+
+      // Add customization options to form data
+      const formData = new FormData(productForm);
+      Object.entries(options).forEach(([key, value]) => {
+        formData.append(`properties[${key}]`, value);
+      });
+
+      // Include the total price in the form data as a custom property
+      const totalPrice = totalPriceEl.textContent.replace(/[^\d.-]/g, ''); // Remove currency symbols
+      formData.append('properties[Total Price]', `£${totalPrice}`);
+
+      // Shopify AJAX cart API
+      fetch("/cart/add.js", {
+        method: "POST",
+        body: formData,
+      })
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to add to cart");
+        return response.json();
+      })
+      .then(() => {
+        window.location.href = "/cart"; // Redirect to the cart page
+      })
+      .catch((error) => console.error("Error adding to cart:", error));
+    });
+  }
+});
+</script>
+
+
+
+
 {% schema %}
   {
     "name": "Section name",
-    "settings": []
+    "settings": [],
+    "presets": [
+      {
+        "name": "option-tabs-ABBEDS"
+      }
+    ]
   }
 {% endschema %}
