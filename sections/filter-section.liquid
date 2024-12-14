@@ -282,66 +282,40 @@ input[type=range]::-moz-range-track {
       }
    }
  </style>
+
 <script>
+  
   var divisor = document.getElementById("divisor"),
     handle = document.getElementById("handle"),
     slider = document.getElementById("slider");
-  var goodTab = document.getElementById("Good");
-  var badTab = document.getElementById("Bad");
+  var goodDiv = document.getElementById("good");
+  var badDiv = document.getElementById("bad");
 
-  // Function to update the divisor and tab synchronization
+  // Function to update the position of the divisor and handle
   function moveDivisor() {
     var value = slider.value;
 
-    // Update the divisor and handle positions
+    if (value < 50) {
+      console.log("left");
+      badDiv.style.color = "red";
+      badDiv.style.fontSize = 35 + 0.4 * (100 - value) + "px";
+    } else {
+      console.log("right");
+      goodDiv.style.color = "green";
+      goodDiv.style.fontSize = 35 + 0.4 * value + "px";
+    }
+
+    var opacity = value / 100;
+    var complementaryOpacity = 1 - opacity;
+
+    document.getElementById("left").style.opacity = opacity;
+    document.getElementById("right").style.opacity = complementaryOpacity;
+
     handle.style.left = value + "%";
     divisor.style.width = value + "%";
-
-    // Adjust tab visibility based on the slider value
-    if (window.innerWidth <= 1000) {
-      if (value < 50) {
-        openTab("Bad"); // Show "Bad" tab content
-      } else {
-        openTab("Good"); // Show "Good" tab content
-      }
-    }
   }
 
-  // Function to open tabs and synchronize with the slider
-  function openTab(tabName) {
-    var tabcontent = document.getElementsByClassName("tabcontent");
-    var tablinks = document.getElementsByClassName("tablinks");
-
-    // Hide all tab content
-    for (var i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    // Remove active class from all tab buttons
-    for (var i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the selected tab and set it active
-    document.getElementById(tabName).style.display = "block";
-    for (var j = 0; j < tablinks.length; j++) {
-      if (tablinks[j].textContent.trim().toUpperCase() === tabName.toUpperCase()) {
-        tablinks[j].className += " active";
-      }
-    }
-
-    // Sync slider position with tabs
-    if (tabName === "Good") {
-      slider.value = 100;
-    } else if (tabName === "Bad") {
-      slider.value = 0;
-    }
-
-    // Update the divisor position
-    moveDivisor();
-  }
-
-  // Dragging functionality
+  // Function to handle dragging the divisor
   function startDragging(e) {
     e.preventDefault();
     document.addEventListener("mousemove", dragging);
@@ -361,25 +335,34 @@ input[type=range]::-moz-range-track {
     document.removeEventListener("mouseup", stopDragging);
   }
 
-  // Initialize on window load
   window.onload = function () {
     moveDivisor();
 
-    // Add dragging functionality to divisor
+    // Add the dragging functionality to the divisor
     divisor.addEventListener("mousedown", startDragging);
 
     // Ensure the original slider functionality works
     slider.addEventListener("input", moveDivisor);
   };
 
-  // Handle tab clicks
-  document.getElementById("defaultOpen").addEventListener("click", () => openTab("Good"));
-  document.querySelector(".tablinks:nth-child(2)").addEventListener("click", () => openTab("Bad"));
+  // Tab functionality (unchanged)
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 
-  // Auto-select the default tab
   document.getElementById("defaultOpen").click();
+  
 </script>
-
 
 
 
